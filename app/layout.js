@@ -1,14 +1,19 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import AppShell from "@/components/layouts/AppShell";
+import { Lora, Merriweather } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const lora = Lora({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-lora",
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweather = Merriweather({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-merriweather",
+  weight: ["400", "500", "700", "900"],
 });
 
 export const metadata = {
@@ -20,9 +25,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${lora.variable} ${merriweather.variable} antialiased`}
       >
-        {children}
+        <AppShell>
+          {children}
+        </AppShell>
       </body>
     </html>
   );
