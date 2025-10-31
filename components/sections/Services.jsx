@@ -57,7 +57,7 @@ const Services = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-primary-700"
+      className="relative"
       style={{ height: `calc(${services.length + 1.3} * 100vh)` }}
     >
       <div className="sticky top-0 h-dvh py-32">
@@ -80,9 +80,6 @@ const Services = () => {
               </div>
             </div>
             <div className="lg:w-7/12 w-full">
-              <h2 className="text-white text-4xl font-semibold sm:text-5xl">
-                Our Book Publishing Services
-              </h2>
               <div className="relative">
                 <div className="p-[45px_100px_2px] overflow-hidden">
                   {services.map((serv, idx) => {
@@ -92,9 +89,8 @@ const Services = () => {
                       <div
                         key={idx}
                         className={cn(
-                          "relative not-last:pb-6",
-
-                          "not-last:after:w-[1.5px] not-last:after:h-full not-last:after:absolute not-last:after:-left-[46px] not-last:after:top-6 not-last:after:bg-primary-600/50"
+                          "relative not-last:pb-5",
+                          "not-last:after:w-[1.5px] not-last:after:h-full not-last:after:absolute not-last:after:-left-[46px] not-last:after:top-6 not-last:after:bg-primary-300"
                         )}
                         aria-current={isActive}
                       >
@@ -102,8 +98,8 @@ const Services = () => {
                           className={cn(
                             "absolute rounded-full z-1",
                             isActive
-                              ? "text-2xl font-medium text-white size-[45px] bg-primary -left-[68px] flex items-center justify-center outline-10 outline-primary-700 shadow-[0_0_0_10px_#ff6900,0_0_0_11.5px_#ff6900] top-0"
-                              : "-left-[52.5px] top-2 size-4 bg-white"
+                              ? "text-2xl font-medium text-white size-[45px] bg-primary -left-[68px] flex items-center justify-center outline-10 outline-white shadow-[0_0_0_10px_#ffc46d,0_0_0_11.5px_#ffc46d] top-0"
+                              : "-left-[52.5px] top-2 size-4 bg-primary-300"
                           )}
                         >
                           {isActive && idx + 1}
@@ -112,13 +108,13 @@ const Services = () => {
                           className={cn(
                             "text-2xl font-semibold transition-colors sm:text-[28px]",
                             !isActive && idx < services.length - 1 && "mb-4",
-                            isActive ? "text-primary-300 mb-4" : "text-white"
+                            isActive ? "text-primary mb-4" : "text-neutral-700"
                           )}
                         >
                           {serv.title}
                         </h3>
                         {isActive && (
-                          <p className="text-lg text-white sm:text-xl">
+                          <p className="text-lg text-neutral-700 sm:text-xl">
                             {serv.description}
                           </p>
                         )}

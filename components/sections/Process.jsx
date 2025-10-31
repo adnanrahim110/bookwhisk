@@ -1,65 +1,80 @@
 "use client";
 
 import Button from "@/components/ui/Button";
+import { s1, s2, s3, s4 } from "@/public";
 import { cn } from "@/utils/cn";
-import { Globe, TrendingUp } from "lucide-react";
+import {
+  CheckCircle,
+  Clipboard,
+  FileText,
+  Globe,
+  Layout,
+  Megaphone,
+  MessageSquare,
+  PenTool,
+} from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import Subtitle from "../ui/Subtitle";
 
 const steps = [
   {
-    label: "Free Consultation",
-    title: "Discuss Your Book Idea",
+    label: "Share Your Vision With Us",
+    title: "Free Consultation & Custom Publishing Plan",
+    image: s1,
     description: [
       {
-        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque porro eos animi necessitatibus sequi ut,",
-        icon: Globe,
+        text: "Your journey begins with a one-on-one consultation. Tell us about your book, your goals, and the audience you want to reach. Our publishing experts listen carefully and evaluate every detail, from your manuscript’s current stage to your ideal publishing timeline.",
+        icon: MessageSquare,
       },
       {
-        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque",
-        icon: TrendingUp,
+        text: "From there, we create a tailored publishing plan designed just for you, outlining the complete process, clear timelines, deliverables, and transparent pricing. No hidden costs, no surprises, just a roadmap to bring your book to life confidently.",
+        icon: Clipboard,
       },
     ],
   },
   {
-    label: "Custom Plan",
-    title: "Discuss Your Book Idea",
+    label: "Editorial Excellence",
+    title: "Editing & Manuscript Perfection",
+    image: s2,
     description: [
       {
-        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque porro eos animi necessitatibus sequi ut,",
-        icon: Globe,
+        text: "Once your plan is approved, our editorial specialists take your manuscript through a meticulous editing process, including developmental, line, and proofing stages as needed. Every edit aligns with international publishing standards and Amazon guidelines, ensuring your story is clear, polished, and ready to shine.",
+        icon: FileText,
       },
       {
-        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque",
-        icon: TrendingUp,
+        text: "You’ll review and approve each milestone so your authentic voice always leads the way.",
+        icon: CheckCircle,
       },
     ],
   },
   {
-    label: "Expert Execution",
-    title: "Discuss Your Book Idea",
+    label: "Design & Formatting",
+    title: "Design, Formatting & Finalization",
+    image: s3,
     description: [
       {
-        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque porro eos animi necessitatibus sequi ut,",
-        icon: Globe,
+        text: "Next, our creative and technical teams step in to shape your book’s identity. We design a stunning, genre-appropriate cover and ensure the interior layout is beautiful, accessible, and publication-ready.",
+        icon: PenTool,
       },
       {
-        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque",
-        icon: TrendingUp,
+        text: "Your manuscript is then formatted for both digital and print editions, fully compliant with industry standards. We finalize every element to guarantee your book performs flawlessly across all major platforms.",
+        icon: Layout,
       },
     ],
   },
   {
-    label: "Publishing & Launch",
-    title: "Discuss Your Book Idea",
+    label: "Publish, Distribute & Grow",
+    title: "Publish, Distribute & Grow",
+    image: s4,
     description: [
       {
-        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque porro eos animi necessitatibus sequi ut,",
+        text: "With everything perfected, your book is published under your name, with full ownership and royalties retained by you. We distribute your work globally across leading online retailers and marketplaces, setting up your metadata, categories, and keywords for optimal discoverability.",
         icon: Globe,
       },
       {
-        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque",
-        icon: TrendingUp,
+        text: "Once live, our marketing and promotional team helps you build visibility and reach the readers who matter most.",
+        icon: Megaphone,
       },
     ],
   },
@@ -69,7 +84,7 @@ const Process = () => {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="pt-24 relative overflow-hidden">
       <div className="absolute z-0 top-1/2 -translate-y-1/2 -right-1/4 h-full aspect-square bg-radial from-primary-200 via-primary-50/50 to-white rounded-full blur-3xl" />
       <div className="container relative z-1">
         <div className="text-center mb-16">
@@ -84,13 +99,13 @@ const Process = () => {
         </div>
         <div className="bg-white rounded-2xl border border-neutral-100 p-8 shadow-sm">
           <div className="size-full grid grid-cols-1 gap-14">
-            <div className="w-full flex items-center justify-between gap-10">
+            <div className="w-full flex items-center justify-between gap-5">
               {steps.map((step, idx) => (
                 <button
                   onClick={() => setActive(idx)}
                   key={idx}
                   className={cn(
-                    "flex flex-col items-start relative group/active",
+                    "flex flex-col items-start text-left relative group/active",
                     "before:left-0 before:absolute before:top-full before:h-0.5 before:transition-all before:duration-300 before:ease-linear",
                     active === idx
                       ? "before:bg-primary before:w-full"
@@ -120,7 +135,7 @@ const Process = () => {
             </div>
             <div className="w-full flex justify-between">
               <div className="lg:w-[33%]">
-                <div className="flex flex-col justify-between h-full">
+                <div className="flex flex-col justify-between h-full gap-5">
                   <div className="space-y-5">
                     <h3 className="text-neutral-900 text-3xl">
                       {steps[active].title}
@@ -147,7 +162,12 @@ const Process = () => {
                 </div>
               </div>
               <div className="lg:w-[62%]">
-                <img src="/imgs/s2.avif" />
+                <Image
+                  width={894}
+                  height={494}
+                  src={steps[active].image}
+                  alt=""
+                />
               </div>
             </div>
           </div>

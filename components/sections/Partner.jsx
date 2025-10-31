@@ -17,37 +17,37 @@ const benefits = [
   {
     title: "In-House Experts",
     description:
-      "No outsourcing. Our full-time team of editors, designers, and publishing specialists work exclusively on your project.",
+      "No outsourcing ever. Our full-time editors, designers, and publishing specialists work exclusively on your project to ensure top-tier quality from start to finish.",
     icon: RiTeamLine,
   },
   {
-    title: "1-on-1 Support",
+    title: "1-on-1 Author Support",
     description:
-      "Your dedicated project manager guides you through every step, answering questions and keeping you informed.",
+      "You’ll never feel lost in the process. Your dedicated project manager guides you through every stage, providing updates, insights, and expert advice making the process seamless, efficient, and enjoyable.",
     icon: RiUserHeartLine,
   },
   {
-    title: "Quality Guaranteed",
+    title: "Quality Assurance",
     description:
-      "We stand behind our work. If you're not satisfied, we'll make it right. Your success is our success.",
+      "If it’s not right, we make it right. Every book undergoes multiple layers of editorial and design review, because your success is our standard.",
     icon: RiShieldCheckLine,
   },
   {
     title: "Fast Turnaround",
     description:
-      "Efficient processes and dedicated teams mean your book gets published faster without sacrificing quality.",
+      "We move with purpose and at the client’s pace. Our streamlined process ensures your book is published efficiently without ever compromising quality.",
     icon: RiTimeLine,
   },
   {
-    title: "Transparent Pricing",
+    title: "Full Creative Control",
     description:
-      "Clear, upfront pricing with no hidden fees. You know exactly what you're paying for from day one.",
+      "Enjoy the freedom to publish your way. Through our process, as an author you will have complete control and final say on everything that we will do for you",
     icon: RiPriceTag3Line,
   },
   {
-    title: "Wide Distribution",
+    title: "Global Distribution and Marketing",
     description:
-      "Your book reaches readers everywhere-Amazon, Apple Books, Kobo, and more. Maximum visibility, maximum sales.",
+      "In any format, eBook, audiobook, or print-on-demand, your book will be distributed and marketed worldwide, with just a few clicks.",
     icon: RiGlobalLine,
   },
 ];
@@ -56,22 +56,22 @@ const highlights = [
   {
     value: "98%",
     label: "Author Satisfaction",
-    quote:
-      '"The most professional and caring publishing team I\'ve worked with."',
+    quote: "Proof that care and craft make all the difference.",
     icon: RiStarFill,
     iconGradient: "from-orange-500 to-rose-500",
   },
   {
     value: "500+",
     label: "Books Published",
-    quote: '"From first-time authors to bestsellers, we\'ve helped them all."',
+    quote:
+      "From debut authors to seasoned writers, we’ve helped stories find their audience.",
     icon: RiBook3Fill,
     iconGradient: "from-rose-500 to-pink-500",
   },
   {
-    value: "4-8 Weeks",
+    value: "4–8 Weeks",
     label: "Average Timeline",
-    quote: '"Fast, efficient, and never rushed. Quality always comes first."',
+    quote: "Your timeline leads. We follow always with uncompromising quality.",
     icon: RiTimeFill,
     iconGradient: "from-amber-500 to-orange-500",
   },
@@ -83,14 +83,17 @@ const Partner = () => {
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="lg:col-span-2 text-center">
-            <Subtitle>The Bookwhisk Advantage</Subtitle>
+            <Subtitle>Why Bookwhisk</Subtitle>
             <h2 className="text-4xl md:text-5xl text-slate-800">
-              Your Publishing Partner, Not Just a Service
+              Publishing has never been this effortless. We whisk away the hard
+              parts of publishing.
             </h2>
             <p className="text-xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
-              We're not a platform or a marketplace. We're a dedicated team that
-              treats your book like it's our own. Here's what makes us
-              different:
+              Every book deserves a team that believes in it. At Bookwhisk, we
+              match each author with editors, designers, and genre-specialist
+              artists who understand their story’s soul. It’s a collaborative
+              process, guided by expertise, fueled by passion, and driven by one
+              shared goal: to make your book the best version of itself.
             </p>
           </div>
           <div>

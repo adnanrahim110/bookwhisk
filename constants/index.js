@@ -63,9 +63,9 @@ export const services = [
     card: {
       title: "Effortless Self-Publishing",
       icon: services_sp,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Take full control of your publishing journey without the learning curve. We combine professional quality with total author freedom, giving you everything you need to publish and profit with confidence.",
       points: [
-        "All-in-One Publishing Platform",
+        "End-to-End Publishing Service",
         "100% Royalties & Sales Tracking",
         "Fast Turnaround with Professional Quality"
       ]
@@ -75,13 +75,13 @@ export const services = [
     title: "Self Publishing",
     href: "/self-publishing",
     card: {
-      title: "Writing Coach",
+      title: "Writing Assistance and Guidance",
       icon: services_wc,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Transform your unfinished manuscript into a publication-ready book. Our expert writing team helps you overcome creative blocks, beat procrastination, and shape your story with clarity and confidence.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Kickstart Your Writing Journey",
+        "Collaborate With Professional Writing Experts",
+        "Turn Your Draft Into a Ready-to-Edit Manuscript"
       ]
     }
   },
@@ -91,11 +91,11 @@ export const services = [
     card: {
       title: "Book Editing",
       icon: services_be,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Transform your manuscript into its most powerful form, polished, precise, and ready for publication. Our editors refine your voice, enhance clarity, and ensure every word resonates.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Professional Editing That Elevates Your Story",
+        "In-Depth Revision & Editorial Guidance",
+        "Developmental, Line Editing Expertise"
       ]
     }
   },
@@ -105,11 +105,11 @@ export const services = [
     card: {
       title: "Book Cover Design",
       icon: services_bc,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Transform your manuscript into a visual masterpiece that stops readers mid-scroll and draws them in instantly.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Custom, Studio-Quality Design",
+        "Optimized for Every Format",
+        "Crafted to Captivate & Sell"
       ]
     }
   },
@@ -117,13 +117,13 @@ export const services = [
     title: "Self Publishing",
     href: "/self-publishing",
     card: {
-      title: "Proofreading & Grammar",
+      title: "Proofreading & Grammar Check",
       icon: services_pg,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Error-free. Reader-ready. Professionally proofed for clarity, flow, and impact, without losing your voice.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Precision Final Review",
+        "Style Preservation",
+        "Ready for Publication"
       ]
     }
   },
@@ -131,13 +131,14 @@ export const services = [
     title: "Self Publishing",
     href: "/book-formatting",
     card: {
-      title: "Flawless Book Formatting",
+      title: "Seamless Book Formatting",
       icon: services_bf,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Turn your finished manuscript into a beautifully designed book that’s ready to publish anywhere. Our formatting experts craft clean, consistent layouts for both print and eBook, tailored to your genre, audience, and publishing goals.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Professional formatting for print & eBook",
+        "Custom layouts for every genre & style",
+        "Publish & Print Ready Formats",
+        "100% compatibility with all reading devices"
       ]
     }
   },
@@ -147,11 +148,11 @@ export const services = [
     card: {
       title: "eBook Creation",
       icon: services_eb,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Create professional, responsive eBooks optimized for major retailers and reading devices. We ensure your content looks great and reads flawlessly across platforms.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Reflowable & fixed-layout formats",
+        "Device-optimized layouts",
+        "Retail-ready ePub & distribution files"
       ]
     }
   },
@@ -159,13 +160,13 @@ export const services = [
     title: "Self Publishing",
     href: "/audiobook-publishing",
     card: {
-      title: "Audiobook Creation",
+      title: "Audiobook Creation & Publishing",
       icon: services_ab,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Transform your manuscript into an engaging, studio-quality listening experience that connects with audiences everywhere. From narration to mastering, we handle every detail so your story sounds as powerful as it reads.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Studio-Quality Production",
+        "Global Audiobook Distribution",
+        "Seamless Book-to-Audio Conversion"
       ]
     }
   },
@@ -175,11 +176,11 @@ export const services = [
     card: {
       title: "Expert Ghostwriting",
       icon: services_gw,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Top-tier, genre-specialist writers collaborate with you in a transparent process to turn ideas into publishable manuscripts while preserving your voice and ownership.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Top-Tier, Genre-Specialist Writers",
+        "Collaborative, Transparent Process",
+        "100% Ownership, Human Authentic Voice"
       ]
     }
   },
@@ -188,13 +189,13 @@ export const services = [
     href: "/book-marketing",
     marketing: true,
     card: {
-      title: "Targeted Book Marketing",
+      title: "Targeted & Holistic Book Marketing",
       icon: services_bm,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Data-driven precision meets creative storytelling, promoting your book strategically, authentically, and sustainably.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Tried, Tested, & Proven Strategy",
+        "Continuous Optimization & Growth",
+        "Custom Tailored Plans"
       ]
     }
   },
@@ -205,11 +206,11 @@ export const services = [
     card: {
       title: "Global Book Distribution",
       icon: services_bd,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Global reach made simple. Distribute your book across the world’s leading online platforms and digital libraries while keeping full control and 100% of your NET royalties.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Seamless Worldwide Reach",
+        "eBook, Print & Audiobook Formats",
+        "Print-on-Demand Setup Across All Platforms"
       ]
     }
   },
@@ -220,11 +221,11 @@ export const services = [
     card: {
       title: "Book Translation",
       icon: services_bt,
-      text: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
+      text: "Bring your story to the world, expertly translated without losing its essence, tone, or heart.",
       points: [
-        "All-in-One Publishing Platform",
-        "100% Royalties & Sales Tracking",
-        "Fast Turnaround with Professional Quality"
+        "Multilingual Excellence",
+        "Genre-Savvy Translators",
+        "Authentic Voice, Intact"
       ]
     }
   },

@@ -20,7 +20,7 @@ const Cards = () => {
                 <div className="text-center max-w-5xl mx-auto">
                   <h2 className="text-2xl md:text-5xl">{title}</h2>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
                   {chunk.map((srv, idx) => (
                     <div
                       key={idx}
@@ -38,7 +38,7 @@ const Cards = () => {
                               className="w-14"
                             />
                           </div>
-                          <h3 className="text-2xl">
+                          <h3 className="text-[22px]">
                             <Link
                               href={srv.href}
                               className="hover:text-primary pb-1 transition-all duration-300 ease-in-out relative inline-block before:h-0.5 before:w-0 before:absolute before:top-full before:left-0 before:bg-primary hover:before:w-full before:transition-all before:duration-200 before:ease-linear"
@@ -51,7 +51,7 @@ const Cards = () => {
                             {srv.card.points.map((point, pIdx) => (
                               <li
                                 key={pIdx}
-                                className="flex items-center gap-1"
+                                className="flex items-center gap-1 text-sm"
                               >
                                 <div className="shrink-0 text-primary">
                                   <Check size={20} strokeWidth={3} />
@@ -62,26 +62,26 @@ const Cards = () => {
                               </li>
                             ))}
                           </ul>
-                          <div className="mt-4 pt-3 border-t border-t-neutral-200">
-                            <Link
-                              href={srv.href}
-                              className="inline-flex text-lg pl-2 items-end leading-none font-semibold group/link justify-start text-black hover:text-primary-700 transition-all duration-300 ease-in-out"
-                            >
-                              <span>Learn more</span>
-                              <span className="shrink-0 inline-flex items-center">
-                                <ChevronRight
-                                  size={16}
-                                  strokeWidth={3}
-                                  className="group-hover/link:translate-x-0.5 transition-all duration-300 ease-in-out"
-                                />
-                                <ChevronRight
-                                  size={16}
-                                  strokeWidth={3}
-                                  className="-translate-x-2.5 opacity-0 group-hover/link:-translate-x-2 group-hover/link:opacity-100 transition-all duration-300 ease-in-out"
-                                />
-                              </span>
-                            </Link>
-                          </div>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-t-neutral-200">
+                          <Link
+                            href={srv.href}
+                            className="inline-flex text-lg pl-2 items-end leading-none font-semibold group/link justify-start text-black hover:text-primary-700 transition-all duration-300 ease-in-out"
+                          >
+                            <span>Learn more</span>
+                            <span className="shrink-0 inline-flex items-center">
+                              <ChevronRight
+                                size={16}
+                                strokeWidth={3}
+                                className="group-hover/link:translate-x-0.5 transition-all duration-300 ease-in-out"
+                              />
+                              <ChevronRight
+                                size={16}
+                                strokeWidth={3}
+                                className="-translate-x-2.5 opacity-0 group-hover/link:-translate-x-2 group-hover/link:opacity-100 transition-all duration-300 ease-in-out"
+                              />
+                            </span>
+                          </Link>
                         </div>
                       </div>
                     </div>
