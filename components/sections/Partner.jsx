@@ -11,6 +11,7 @@ import {
   RiTimeLine,
   RiUserHeartLine,
 } from "react-icons/ri";
+import Subtitle from "../ui/Subtitle";
 
 const benefits = [
   {
@@ -78,21 +79,21 @@ const highlights = [
 
 const Partner = () => {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-primary-50/50">
+      <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="inline-block bg-orange-100 text-orange-800 px-5 py-2 rounded-full text-sm font-medium mb-4">
-              Why Bookwhisk
-            </div>
-            <h2 className="text-4xl md:text-5xl font-serif text-slate-800 mb-6">
+          <div className="lg:col-span-2 text-center">
+            <Subtitle>The Bookwhisk Advantage</Subtitle>
+            <h2 className="text-4xl md:text-5xl text-slate-800">
               Your Publishing Partner, Not Just a Service
             </h2>
-            <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+            <p className="text-xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
               We're not a platform or a marketplace. We're a dedicated team that
               treats your book like it's our own. Here's what makes us
               different:
             </p>
+          </div>
+          <div>
             <div className="space-y-6">
               {benefits.map(({ title, description, icon: Icon }) => (
                 <div key={title} className="flex items-start gap-4">

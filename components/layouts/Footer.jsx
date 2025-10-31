@@ -1,159 +1,204 @@
-import { navigation_links } from "@/constants";
-import {
-  RiBookOpenLine,
-  RiFacebookFill,
-  RiInstagramFill,
-  RiLinkedinFill,
-  RiMailLine,
-  RiPhoneLine,
-  RiTimeLine,
-  RiTwitterXFill,
-} from "react-icons/ri";
+import { navigation_links, services } from "@/constants";
+import { ae, d, logo, mc, pp, s, v } from "@/public";
+import { cn } from "@/utils/cn";
+import { BadgeCheck, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const socialLinks = [
-  { href: "#", label: "Facebook", icon: RiFacebookFill },
-  { href: "#", label: "Twitter", icon: RiTwitterXFill },
-  { href: "#", label: "Instagram", icon: RiInstagramFill },
-  { href: "#", label: "LinkedIn", icon: RiLinkedinFill },
-];
-
-const serviceLinks =
-  navigation_links
-    .find(({ name }) => name === "Services")
-    ?.children?.slice(0, 5) ?? [];
-
-const companyLinks = navigation_links.filter(({ name }) => name !== "Services");
-
-const contactItems = [
-  {
-    label: "Call Us",
-    value: "(123) 456-7890",
-    href: "tel:+1234567890",
-    icon: RiPhoneLine,
-  },
-  {
-    label: "Email Us",
-    value: "hello@bookwhisk.com",
-    href: "mailto:hello@bookwhisk.com",
-    icon: RiMailLine,
-  },
-  {
-    label: "Business Hours",
-    value: "Mon-Fri: 9AM - 6PM EST",
-    icon: RiTimeLine,
-  },
-];
+const companyLinks = navigation_links.filter(
+  ({ name }) =>
+    name !== "Services" && name !== "Home" && !name.startsWith("Child")
+);
 
 const footerLinks = [
   { href: "#", label: "Privacy Policy" },
   { href: "#", label: "Terms of Service" },
 ];
 
+const AnchorLink = ({ href, children }) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+  return (
+    <Link
+      href={href}
+      className={cn(
+        "inline-block xl:text-base relative transition-all duration-300 ease-in-out",
+        "before:absolute before:top-full before:left-0 before:h-px before:bg-primary before:transition-all before:duration-250 before:ease-linear",
+        isActive
+          ? "before:w-full text-primary"
+          : "before:w-0 hover:before:w-full text-neutral-800 hover:text-primary"
+      )}
+    >
+      {children}
+    </Link>
+  );
+};
+
 const Footer = () => {
   return (
-    <footer className="bg-slate-800 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-linear-to-br from-orange-500 to-rose-500 rounded-xl flex items-center justify-center">
-                <RiBookOpenLine className="text-white text-xl" />
+    <footer className="bg-white pb-5">
+      <div className="container">
+        <div className="rounded-2xl border border-primary-200 overflow-hidden">
+          <div className="px-10 py-14 bg-linear-to-r from-secondary-50 via-white to-white">
+            <div className="flex flex-wrap justify-between items-start">
+              <div className="w-full md:w-1/2 lg:w-1/4">
+                <div className="flex flex-col gap-2">
+                  <Link href="/">
+                    <Image
+                      width={400}
+                      height={150}
+                      src={logo}
+                      alt="Bookwhisk"
+                      className="h-16 w-auto"
+                    />
+                  </Link>
+                  <p className="text-sm xl:text-[15px]">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Voluptatem est quo deserunt explicabo quibusdam voluptatum
+                    repellat, beatae nam ratione! Totam.
+                  </p>
+                </div>
               </div>
-              <span className="text-2xl font-serif font-bold">Bookwhisk</span>
-            </div>
-            <p className="text-slate-300 leading-relaxed mb-6">
-              Your trusted partner in self-publishing. We help authors bring
-              their stories to life with professional, personalized service.
-            </p>
-            <div className="flex gap-3">
-              {socialLinks.map(({ href, label, icon: Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="w-10 h-10 bg-slate-700 hover:bg-orange-500 rounded-lg flex items-center justify-center transition-colors cursor-pointer"
-                >
-                  <Icon className="text-lg" />
-                </a>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold mb-4">Services</h3>
-            <ul className="space-y-3">
-              {serviceLinks.map(({ href, name }) => (
-                <li key={name}>
-                  <a
-                    href={href}
-                    className="text-slate-300 hover:text-orange-400 transition-colors cursor-pointer"
-                  >
-                    {name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold mb-4">Company</h3>
-            <ul className="space-y-3">
-              {companyLinks.map(({ href, name }) => (
-                <li key={name}>
-                  <a
-                    href={href}
-                    className="text-slate-300 hover:text-orange-400 transition-colors cursor-pointer"
-                  >
-                    {name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold mb-4">Get In Touch</h3>
-            <ul className="space-y-3">
-              {contactItems.map(({ label, value, href, icon: Icon }) => (
-                <li
-                  key={label}
-                  className="flex items-start gap-3 text-slate-300"
-                >
-                  <Icon className="text-orange-400 mt-1" />
-                  <div>
-                    <p className="text-sm text-slate-400 mb-1">{label}</p>
-                    {href ? (
-                      <a
-                        href={href}
-                        className="hover:text-orange-400 transition-colors cursor-pointer"
-                      >
-                        {value}
-                      </a>
-                    ) : (
-                      <p>{value}</p>
-                    )}
+              <div className="w-full lg:w-[15%]">
+                <h4 className="text-xl font-semibold text-slate-700 mb-3">
+                  Company
+                </h4>
+                <ul className="space-y-2 text-sm text-slate-600">
+                  {companyLinks.map((c) => (
+                    <li key={c.name}>
+                      <AnchorLink href={c.href}>{c.name}</AnchorLink>
+                    </li>
+                  ))}
+                </ul>
+                <h4 className="text-xl font-semibold text-slate-700 my-3">
+                  legal
+                </h4>
+                <ul className="space-y-2 text-sm text-slate-600">
+                  {footerLinks.map((f) => (
+                    <li key={f.label}>
+                      <AnchorLink href={f.href}>{f.label}</AnchorLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="w-full lg:w-[25%]">
+                <div className="flex flex-wrap justify-between items-end">
+                  <div className="w-1/2">
+                    <h4 className="text-xl font-semibold text-slate-700 mb-3">
+                      Services
+                    </h4>
+                    <ul className="space-y-2 text-sm text-slate-600">
+                      {services.slice(0, 5).map((c, idx) => (
+                        <li key={idx}>
+                          <AnchorLink href={c.href}>{c.title}</AnchorLink>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </li>
-              ))}
-            </ul>
+                  <div className="w-1/2">
+                    <ul className="space-y-2 text-sm text-slate-600">
+                      {services.slice(6).map((c, idx) => (
+                        <li key={idx}>
+                          <AnchorLink href={c.href}>{c.title}</AnchorLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 lg:w-[22%]">
+                <div>
+                  <h4 className="text-xl font-semibold text-slate-700 mb-3">
+                    Get in Touch
+                  </h4>
+                  <div className=" text-slate-600 space-y-3">
+                    <div className="flex items-start gap-1.5">
+                      <div className="shrink-0">
+                        <Mail size={16} className="mt-1 text-secondary" />
+                      </div>
+                      <div className="text-slate-800 font-medium">
+                        info@bookwhisk.com
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                      <div className="shrink-0">
+                        <Phone size={16} className="mt-1 text-secondary" />
+                      </div>
+                      <div className="text-slate-800 font-medium">
+                        Support: +1 (561) 810–3364
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                      <div className="shrink-0">
+                        <MapPin size={16} className="mt-1 text-secondary" />
+                      </div>
+                      <div>
+                        <div className="text-slate-800 font-medium">
+                          1500 Gateway Blvd STE 220
+                        </div>
+                        <div className="text-slate-500 text-xs">
+                          Boynton Beach, FL 33426, USA
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="border-t border-slate-700 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-400 text-sm">
-              &copy; 2024 Bookwhisk. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm">
-              {footerLinks.map(({ href, label, external }) => (
-                <a
-                  key={label}
-                  href={href}
-                  {...(external && {
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                  })}
-                  className="text-slate-400 hover:text-orange-400 transition-colors cursor-pointer"
-                >
-                  {label}
-                </a>
-              ))}
+          <div className="border-t border-t-primary-200 bg-linear-to-l from-primary-50 via-white to-white">
+            <div className="p-10">
+              <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex items-start gap-2">
+                    <div className="shrink-0 mt-0.5 text-secondary">
+                      <BadgeCheck size={40} />
+                    </div>
+                    <div>
+                      <div className="text-xl font-semibold text-slate-900">
+                        100% hassle-free
+                      </div>
+                      <div className="text-neutral-600">
+                        7-day money-back guarantee
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2">
+                    <div className="shrink-0 text-secondary">
+                      <ShieldCheck size={40} />
+                    </div>
+                    <div>
+                      <div className="text-xl font-semibold text-slate-900">
+                        SSL Secure payment
+                      </div>
+                      <div className="text-neutral-600">
+                        Your information is protected by 256-bit SSL encryption
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-1 flex flex-col md:items-end md:justify-center">
+                  <div className="flex items-center gap-4">
+                    {[d, mc, ae, v, pp, s].map((c, idx) => (
+                      <Image
+                        key={idx}
+                        width={100}
+                        height={80}
+                        src={c}
+                        alt=""
+                        className={cn("w-auto", idx !== 5 ? "h-4" : "h-6")}
+                      />
+                    ))}
+                  </div>
+
+                  <div className="mt-4 text-sm text-neutral-500">
+                    © 2025 Spines | All rights reserved.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

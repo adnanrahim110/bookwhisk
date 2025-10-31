@@ -1,22 +1,84 @@
+@import "swiper/css";
+@import "swiper/css/autoplay";
 @import "tailwindcss";
 
-:root {
-  font-family: var(--font-lora), serif;
+@theme {
+  --font-lora: var(--font-lora), serif;
+  --font-merri: var(--font-merriweather), serif;
+
+  --color-primary: #ff6900;
+  --color-primary-50: #fff8ec;
+  --color-primary-100: #fff0d3;
+  --color-primary-200: #ffdda5;
+  --color-primary-300: #ffc46d;
+  --color-primary-400: #ff9f32;
+  --color-primary-500: #ff820a;
+  --color-primary-600: #ff6900;
+  --color-primary-700: #cc4b02;
+  --color-primary-800: #a13a0b;
+  --color-primary-900: #82320c;
+  --color-primary-950: #461704;
+
+  --color-secondary: #ff2355;
+  --color-secondary-50: #fff0f2;
+  --color-secondary-100: #ffe2e7;
+  --color-secondary-200: #ffcad4;
+  --color-secondary-300: #ff9fb0;
+  --color-secondary-400: #ff6987;
+  --color-secondary-500: #ff2355;
+  --color-secondary-600: #ed114d;
+  --color-secondary-700: #c80842;
+  --color-secondary-800: #a8093e;
+  --color-secondary-900: #8f0c3b;
+  --color-secondary-950: #50011b;
+
+  --animate-swing: swing 1s;
 }
 
-body {
-  font-family: var(--font-lora), serif;
+@keyframes swing {
+  20% {
+    transform: rotate(15deg);
+  }
+
+  40% {
+    transform: rotate(-10deg);
+  }
+
+  60% {
+    transform: rotate(5deg);
+  }
+
+  80% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-merriweather), serif;
+@layer base {
+  body {
+    @apply font-lora text-neutral-700 overflow-x-hidden;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply font-merri tracking-tight leading-[1.1] text-black font-medium;
+  }
+
+  button {
+    @apply cursor-pointer outline-none focus:outline-none;
+  }
 }
 
-.font-heading {
-  font-family: var(--font-merriweather), serif;
+@layer utilities {
+  .container {
+    @apply mx-auto w-full px-4 sm:px-6 lg:px-8 sm:max-w-lg md:max-w-2xl lg:max-w-[940px] xl:max-w-6xl 2xl:max-w-7xl relative z-1;
+  }
+}
+
+@layer components {
+  .font-heading {
+    @apply font-merri;
+  }
 }

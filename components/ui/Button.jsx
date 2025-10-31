@@ -1,15 +1,17 @@
+"use client";
+
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all whitespace-nowrap";
+  "inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-base xl:text-xl transition-all whitespace-nowrap group/btn";
 
 const variantClasses = {
   primary:
-    "bg-orange-500 text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/40",
+    "bg-orange-500 text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600 hover:shadow-orange-500/40",
   secondary:
     "bg-white text-slate-800 border-2 border-slate-200 hover:border-orange-500 hover:text-orange-600",
-  tertiary:
-    "bg-white text-orange-600 shadow-lg hover:bg-orange-50",
+  tertiary: "bg-white text-orange-600 shadow-lg hover:bg-orange-50",
 };
 
 const disabledClasses = "opacity-60 cursor-not-allowed pointer-events-none";
@@ -21,7 +23,7 @@ const Button = ({
   type = "button",
   disabled = false,
   variant = "primary",
-  icon,
+  icon = ChevronRight,
   iconPosition = "right",
   className = "",
   children,
@@ -29,6 +31,8 @@ const Button = ({
 }) => {
   const isLink = typeof href === "string" && href.length > 0;
   const variantClass = variantClasses[variant] ?? variantClasses.primary;
+
+  const Icon = icon;
 
   const classes = [
     baseClasses,
@@ -40,9 +44,9 @@ const Button = ({
     .join(" ");
 
   const iconMarkup = (position) =>
-    icon && iconPosition === position ? (
+    Icon && iconPosition === position ? (
       <span className="inline-flex items-center justify-center text-current">
-        {icon}
+        <Icon className="group-hover/btn:translate-x-1 transition-all duration-300 ease-linear" />
       </span>
     ) : null;
 
@@ -86,4 +90,3 @@ const Button = ({
 };
 
 export default Button;
-

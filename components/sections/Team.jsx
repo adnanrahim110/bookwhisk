@@ -51,42 +51,19 @@ const Team = () => {
       id="team"
       className="py-24 bg-linear-to-br from-orange-50 via-amber-50 to-rose-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container">
         <div className="text-center mb-16">
           <div className="inline-block bg-white text-orange-800 px-5 py-2 rounded-full text-sm font-medium mb-4 shadow-sm">
             Meet Our Team
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif text-slate-800 mb-6">
+          <h2 className="text-4xl md:text-5xl text-slate-800">
             Experts Who Care About Your Success
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
             Our in-house team brings decades of combined experience in editing,
             design, publishing, and marketing. Every member is dedicated to
             making your book the best it can be.
           </p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {teamMembers.map(({ name, role, specialty, image }) => (
-            <div key={name} className="group">
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-orange-100">
-                <div className="relative overflow-hidden">
-                  <img
-                    alt={image.alt}
-                    className="w-full h-80 object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                    src={`/imgs/${image.src}`}
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-slate-800 mb-1">
-                    {name}
-                  </h3>
-                  <p className="text-orange-600 font-semibold mb-2">{role}</p>
-                  <p className="text-sm text-slate-600">{specialty}</p>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
         <div className="bg-white p-10 rounded-3xl shadow-xl border border-orange-200">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -115,7 +92,7 @@ const Team = () => {
               <img
                 alt="Project Manager"
                 className="rounded-2xl shadow-xl w-full h-auto"
-                src="/imgs/teams-sec.jpg"
+                src="/imgs/teams-sec.avif"
               />
             </div>
           </div>

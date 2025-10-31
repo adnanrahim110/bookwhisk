@@ -1,49 +1,79 @@
+"use client";
+
 import Button from "@/components/ui/Button";
-import {
-  RiChatSmile3Line,
-  RiFileList3Line,
-  RiTeamLine,
-  RiRocket2Line,
-} from "react-icons/ri";
+import { cn } from "@/utils/cn";
+import { Globe, TrendingUp } from "lucide-react";
+import { useState } from "react";
+import Subtitle from "../ui/Subtitle";
 
 const steps = [
   {
-    title: "Free Consultation",
-    description:
-      "Share your vision with us. We discuss your goals, timeline, and the best path forward for your book.",
-    icon: RiChatSmile3Line,
+    label: "Free Consultation",
+    title: "Discuss Your Book Idea",
+    description: [
+      {
+        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque porro eos animi necessitatibus sequi ut,",
+        icon: Globe,
+      },
+      {
+        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque",
+        icon: TrendingUp,
+      },
+    ],
   },
   {
-    title: "Custom Plan",
-    description:
-      "Receive a tailored publishing plan with clear timelines, pricing, and deliverables. No surprises.",
-    icon: RiFileList3Line,
+    label: "Custom Plan",
+    title: "Discuss Your Book Idea",
+    description: [
+      {
+        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque porro eos animi necessitatibus sequi ut,",
+        icon: Globe,
+      },
+      {
+        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque",
+        icon: TrendingUp,
+      },
+    ],
   },
   {
-    title: "Expert Execution",
-    description:
-      "Our team gets to work-editing, designing, formatting. You stay informed every step of the way.",
-    icon: RiTeamLine,
+    label: "Expert Execution",
+    title: "Discuss Your Book Idea",
+    description: [
+      {
+        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque porro eos animi necessitatibus sequi ut,",
+        icon: Globe,
+      },
+      {
+        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque",
+        icon: TrendingUp,
+      },
+    ],
   },
   {
-    title: "Publishing & Launch",
-    description:
-      "We publish your book across all platforms and support your launch with marketing strategies.",
-    icon: RiRocket2Line,
+    label: "Publishing & Launch",
+    title: "Discuss Your Book Idea",
+    description: [
+      {
+        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque porro eos animi necessitatibus sequi ut,",
+        icon: Globe,
+      },
+      {
+        text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores laboriosam neque",
+        icon: TrendingUp,
+      },
+    ],
   },
 ];
 
 const Process = () => {
+  const [active, setActive] = useState(0);
+
   return (
-    <section
-      id="process"
-      className="py-24 bg-linear-to-br from-orange-50 via-rose-50 to-amber-50"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute z-0 top-1/2 -translate-y-1/2 -right-1/4 h-full aspect-square bg-radial from-primary-200 via-primary-50/50 to-white rounded-full blur-3xl" />
+      <div className="container relative z-1">
         <div className="text-center mb-16">
-          <div className="inline-block bg-white text-orange-800 px-5 py-2 rounded-full text-sm font-medium mb-4 shadow-sm">
-            Simple Process
-          </div>
+          <Subtitle>The Bookwhisk Process</Subtitle>
           <h2 className="text-4xl md:text-5xl font-serif text-slate-800 mb-6">
             How It Works
           </h2>
@@ -52,31 +82,75 @@ const Process = () => {
             smooth and stress-free.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map(({ title, description, icon: Icon }, index) => (
-            <div key={title} className="relative">
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-20 left-full w-full h-0.5 bg-linear-to-r from-orange-300 to-rose-300 -z-10"></div>
-              )}
-              <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-orange-100 h-full">
-                <div className="w-16 h-16 bg-linear-to-br from-orange-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                  <Icon className="text-2xl text-white" />
+        <div className="bg-white rounded-2xl border border-neutral-100 p-8 shadow-sm">
+          <div className="size-full grid grid-cols-1 gap-14">
+            <div className="w-full flex items-center justify-between gap-10">
+              {steps.map((step, idx) => (
+                <button
+                  onClick={() => setActive(idx)}
+                  key={idx}
+                  className={cn(
+                    "flex flex-col items-start relative group/active",
+                    "before:left-0 before:absolute before:top-full before:h-0.5 before:transition-all before:duration-300 before:ease-linear",
+                    active === idx
+                      ? "before:bg-primary before:w-full"
+                      : "before:bg-black before:w-0 hover:before:w-full"
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "xl:text-xl",
+                      active === idx ? "text-primary" : "text-neutral-400"
+                    )}
+                  >
+                    Step {idx + 1}
+                  </span>
+                  <h3
+                    className={cn(
+                      "text-[22px] transition-colors duration-300 mb-1",
+                      active === idx
+                        ? "text-black"
+                        : "text-black/65 group-hover/active:text-neutral-900"
+                    )}
+                  >
+                    {step.label}
+                  </h3>
+                </button>
+              ))}
+            </div>
+            <div className="w-full flex justify-between">
+              <div className="lg:w-[33%]">
+                <div className="flex flex-col justify-between h-full">
+                  <div className="space-y-5">
+                    <h3 className="text-neutral-900 text-3xl">
+                      {steps[active].title}
+                    </h3>
+                    <div className="space-y-4">
+                      {steps[active].description.map((item, idx) => {
+                        const Icon = item.icon;
+                        return (
+                          <div key={idx} className="flex items-start gap-3">
+                            <div className="shrink-0 mt-1 text-primary">
+                              <Icon />
+                            </div>
+                            <div className="text-neutral-700">{item.text}</div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div>
+                    <Button className="*:text-sm shadow-none">
+                      Get Started
+                    </Button>
+                  </div>
                 </div>
-                <div className="text-5xl font-bold text-orange-200 mb-4">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-3">
-                  {title}
-                </h3>
-                <p className="text-slate-600 leading-relaxed">{description}</p>
+              </div>
+              <div className="lg:w-[62%]">
+                <img src="/imgs/s2.avif" />
               </div>
             </div>
-          ))}
-        </div>
-        <div className="mt-16 text-center">
-          <Button href="#contact" variant="primary" className="px-10 py-4 text-lg">
-            Schedule a Free Consultation
-          </Button>
+          </div>
         </div>
       </div>
     </section>

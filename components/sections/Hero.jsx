@@ -1,5 +1,6 @@
-import Image from "next/image";
 import Button from "@/components/ui/Button";
+import { cn } from "@/utils/cn";
+import Image from "next/image";
 
 const stats = [
   { value: "500+", label: "Books Published" },
@@ -9,61 +10,86 @@ const stats = [
 
 const Hero = () => {
   return (
-    <section className="relative bg-linear-to-br from-amber-50 via-orange-50 to-rose-50 overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-orange-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-rose-400 rounded-full blur-3xl"></div>
-      </div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="inline-block bg-orange-100 text-orange-800 px-5 py-2 rounded-full text-sm font-medium mb-6">
-              ✨ Your Publishing Partner
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-slate-800 leading-tight mb-6">
-              Bring Your Story to Life
-            </h1>
-            <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-              From manuscript to marketplace, we handle every detail of your
-              self-publishing journey. Professional, personal, and stress-free.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Button href="#contact" variant="primary">
-                Get Started Today
-              </Button>
-              <Button href="#services" variant="secondary">
-                Explore Services
-              </Button>
-            </div>
-            <div className="grid grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">
-                  500+
-                </div>
-                <div className="text-sm text-slate-600">Books Published</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">
-                  98%
-                </div>
-                <div className="text-sm text-slate-600">Happy Authors</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">
-                  1-on-1
-                </div>
-                <div className="text-sm text-slate-600">Support</div>
-              </div>
-            </div>
+    <section className="relative bg-white overflow-hidden pt-44 pb-32">
+      <div className="absolute lg:w-2/5 lg:h-[500px] -top-5 -left-5 bg-linear-to-br from-primary-200 via-primary-50/50 to-white rounded-br-full blur-2xl" />
+      <div className="absolute lg:w-2/5 lg:h-[500px] -top-5 -right-5 bg-linear-to-bl from-secondary-200 via-secondary-50/50 to-white rounded-bl-full blur-2xl" />
+      <div className="container relative z-1">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 leading-tight mb-2">
+            Whisk Your Book To Life
+          </h1>
+          <p className="mx-auto max-w-4xl mb-4">
+            A publishing experience crafted for authors who care about quality.
+            From the first edit to the final sale, Bookwhisk blends precision
+            and passion, all whisked together in one intuitive platform made for
+            indie authors.
+          </p>
+          <div className="flex items-center justify-center">
+            <Button
+              href="#contact"
+              variant="primary"
+              className="bg-emerald-400 hover:bg-emerald-500 shadow-emerald-400/30"
+            >
+              Get Started
+            </Button>
           </div>
-          <div className="relative">
-            <div className="absolute -top-6 -right-6 w-72 h-72 bg-orange-200 rounded-3xl -z-10 rotate-6"></div>
-            <div className="absolute -bottom-6 -left-6 w-72 h-72 bg-rose-200 rounded-3xl -z-10 -rotate-6"></div>
-            <img
-              alt="Author workspace"
-              className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
-              src="/imgs/hero-img.jpg"
-            />
+        </div>
+      </div>
+      <div className="relative w-full mt-20 flex justify-center items-center">
+        <div className="relative z-1">
+          <Image
+            width={653}
+            height={370}
+            src="/imgs/laptop-1.avif"
+            alt="Hero"
+          />
+        </div>
+        <div className="absolute left-1/2 w-full -translate-x-1/2 flex items-center justify-between z-0">
+          <div className="absolute top-0 left-0 h-full w-2/5 bg-linear-to-r from-white via-white/20 to-transparent z-8" />
+          <div className="absolute top-0 right-0 h-full w-2/5 bg-linear-to-l from-white via-white/20 to-transparent z-8" />
+          <div className="md:w-[570px] flex relative items-center flex-nowrap justify-center">
+            {[...Array(4)].map((_, idx) => (
+              <div
+                key={idx}
+                className={cn(
+                  "max-w-full -ml-[2%] overflow-hidden bg-white rounded-[2%_1%_1%_2%]",
+                  idx === 0 && "w-[31%] z-1",
+                  idx === 1 && "w-[35%] z-2",
+                  idx === 2 && "w-[38%] z-3",
+                  idx === 3 && "w-[43%] z-4"
+                )}
+              >
+                <Image
+                  width={250}
+                  height={373}
+                  className="object-cover object-top h-full block"
+                  src={`/imgs/books/${idx + 1}.avif`}
+                  alt={`Book ${idx + 1}`}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="md:w-[570px] flex relative items-center flex-nowrap justify-center">
+            {[...Array(4)].map((_, idx) => (
+              <div
+                key={idx}
+                className={cn(
+                  "max-w-full -ml-[2%] overflow-hidden bg-white rounded-[2%_1%_1%_2%]",
+                  idx === 0 && "w-[43%] z-4",
+                  idx === 1 && "w-[38%] z-3",
+                  idx === 2 && "w-[35%] z-2",
+                  idx === 3 && "w-[31%] z-1"
+                )}
+              >
+                <Image
+                  width={250}
+                  height={373}
+                  className="object-cover object-top h-full block"
+                  src={`/imgs/books/${idx + 5}.avif`}
+                  alt={`Book ${idx + 1}`}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
