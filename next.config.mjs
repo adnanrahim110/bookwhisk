@@ -1,14 +1,10 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  reactCompiler: true,
+  output: "export",
+  trailingSlash: false,
+  skipTrailingSlashRedirect: true,
+  distDir: 'out',
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
+    unoptimized: true,
   },
 };
 

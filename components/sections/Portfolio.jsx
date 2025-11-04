@@ -32,11 +32,8 @@ const Portfolio = () => {
     <section className="py-20 bg-white relative">
       <div className="container text-center">
         <h2 className="text-4xl md:text-5xl text-slate-800 mb-1">
-          Premium Book Portfolio
+          Discover the Works We’ve Brought to Life
         </h2>
-        <p className="text-xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
-          A curated selection of recent covers and designs — swipe to explore.
-        </p>
       </div>
 
       <div className="w-full mt-20">

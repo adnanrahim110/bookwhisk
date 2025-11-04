@@ -16,18 +16,25 @@ const footerLinks = [
   { href: "#", label: "Terms of Service" },
 ];
 
-const AnchorLink = ({ href, children }) => {
+const AnchorLink = ({ href, children, neutral = false }) => {
   const pathname = usePathname();
   const isActive = pathname === href;
+  const textColor = neutral
+    ? "text-neutral-700 hover:text-black"
+    : "text-neutral-800 hover:text-primary";
+
   return (
     <Link
       href={href}
       className={cn(
-        "inline-block xl:text-base relative transition-all duration-300 ease-in-out",
-        "before:absolute before:top-full before:left-0 before:h-px before:bg-primary before:transition-all before:duration-250 before:ease-linear",
+        "inline-block relative transition-all duration-300 ease-in-out",
+        "before:absolute before:top-full before:left-0 before:h-px before:transition-all before:duration-250 before:ease-linear",
+        neutral
+          ? "before:bg-black text-sm font-medium"
+          : "before:bg-primary text-base",
         isActive
-          ? "before:w-full text-primary"
-          : "before:w-0 hover:before:w-full text-neutral-800 hover:text-primary"
+          ? "before:w-full text-primary before:bg-primary!"
+          : `before:w-0 hover:before:w-full ${textColor}`
       )}
     >
       {children}
@@ -40,9 +47,9 @@ const Footer = () => {
     <footer className="bg-white pb-5">
       <div className="container">
         <div className="rounded-2xl border border-primary-200 overflow-hidden">
-          <div className="px-10 py-14 bg-linear-to-r from-secondary-50 via-white to-white">
+          <div className="px-10 pb-14 pt-20 bg-linear-to-r from-secondary-50 via-white to-white">
             <div className="flex flex-wrap justify-between items-start">
-              <div className="w-full md:w-1/2 lg:w-1/4">
+              <div className="w-full md:w-1/2 lg:w-[21%] -mt-7">
                 <div className="flex flex-col gap-2">
                   <Link href="/">
                     <Image
@@ -50,41 +57,35 @@ const Footer = () => {
                       height={150}
                       src={logo}
                       alt="Bookwhisk"
-                      className="h-16 w-auto"
+                      className="w-full h-auto"
                     />
                   </Link>
                   <p className="text-sm xl:text-[15px]">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Voluptatem est quo deserunt explicabo quibusdam voluptatum
-                    repellat, beatae nam ratione! Totam.
+                    At BookWhisk, we make self-publishing simple, transparent,
+                    and empowering. From writing and editing to design,
+                    publishing, and global distribution, we help authors turn
+                    their ideas into beautifully published books.
                   </p>
                 </div>
               </div>
-              <div className="w-full lg:w-[15%]">
+              <div className="w-full lg:w-[12%]">
                 <h4 className="text-xl font-semibold text-slate-700 mb-3">
                   Company
                 </h4>
-                <ul className="space-y-2 text-sm text-slate-600">
+                <ul className="space-y-1.5 text-sm text-slate-600">
                   {companyLinks.map((c) => (
                     <li key={c.name}>
                       <AnchorLink href={c.href}>{c.name}</AnchorLink>
                     </li>
                   ))}
-                </ul>
-                <h4 className="text-xl font-semibold text-slate-700 my-3">
-                  legal
-                </h4>
-                <ul className="space-y-2 text-sm text-slate-600">
-                  {footerLinks.map((f) => (
-                    <li key={f.label}>
-                      <AnchorLink href={f.href}>{f.label}</AnchorLink>
-                    </li>
-                  ))}
+                  <li>
+                    <AnchorLink href="/how-it-works">How it works</AnchorLink>
+                  </li>
                 </ul>
               </div>
-              <div className="w-full lg:w-[25%]">
+              <div className="w-full lg:w-[35%]">
                 <div className="flex flex-wrap justify-between items-end">
-                  <div className="w-1/2">
+                  <div className="w-2/5">
                     <h4 className="text-xl font-semibold text-slate-700 mb-3">
                       Services
                     </h4>
@@ -96,7 +97,7 @@ const Footer = () => {
                       ))}
                     </ul>
                   </div>
-                  <div className="w-1/2">
+                  <div className="w-3/5">
                     <ul className="space-y-2 text-sm text-slate-600">
                       {services.slice(6).map((c, idx) => (
                         <li key={idx}>
@@ -126,7 +127,7 @@ const Footer = () => {
                         <Phone size={16} className="mt-1 text-secondary" />
                       </div>
                       <div className="text-slate-800 font-medium">
-                        Support: +1 (561) 810–3364
+                        Support: +1 (407) 966-9398
                       </div>
                     </div>
                     <div className="flex items-start gap-1.5">
@@ -135,10 +136,10 @@ const Footer = () => {
                       </div>
                       <div>
                         <div className="text-slate-800 font-medium">
-                          1500 Gateway Blvd STE 220
+                          4700 Millenia Blvd
                         </div>
                         <div className="text-slate-500 text-xs">
-                          Boynton Beach, FL 33426, USA
+                          Orlando, FL 32839, USA
                         </div>
                       </div>
                     </div>
@@ -150,21 +151,7 @@ const Footer = () => {
           <div className="border-t border-t-primary-200 bg-linear-to-l from-primary-50 via-white to-white">
             <div className="p-10">
               <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
-                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex items-start gap-2">
-                    <div className="shrink-0 mt-0.5 text-secondary">
-                      <BadgeCheck size={40} />
-                    </div>
-                    <div>
-                      <div className="text-xl font-semibold text-slate-900">
-                        100% hassle-free
-                      </div>
-                      <div className="text-neutral-600">
-                        7-day money-back guarantee
-                      </div>
-                    </div>
-                  </div>
-
+                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
                   <div className="flex items-start gap-2">
                     <div className="shrink-0 text-secondary">
                       <ShieldCheck size={40} />
@@ -173,8 +160,18 @@ const Footer = () => {
                       <div className="text-xl font-semibold text-slate-900">
                         SSL Secure payment
                       </div>
-                      <div className="text-neutral-600">
+                      <div className="text-neutral-600 text-sm">
                         Your information is protected by 256-bit SSL encryption
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="shrink-0 text-secondary">
+                      <BadgeCheck size={40} />
+                    </div>
+                    <div>
+                      <div className="text-xl font-semibold text-slate-900">
+                        100% hassle-free
                       </div>
                     </div>
                   </div>
@@ -182,7 +179,7 @@ const Footer = () => {
 
                 <div className="flex-1 flex flex-col md:items-end md:justify-center">
                   <div className="flex items-center gap-4">
-                    {[d, mc, ae, v, pp, s].map((c, idx) => (
+                    {[mc, v, pp, s].map((c, idx) => (
                       <Image
                         key={idx}
                         width={100}
@@ -195,7 +192,17 @@ const Footer = () => {
                   </div>
 
                   <div className="mt-4 text-sm text-neutral-500">
-                    © 2025 Spines | All rights reserved.
+                    © {new Date().getFullYear()} BookWhisk | All rights
+                    reserved.
+                  </div>
+                  <div className="flex items-center justify-end">
+                    <AnchorLink href="/privacy-policy" neutral>
+                      Privacy Policy
+                    </AnchorLink>
+                    <div className="w-px h-3 bg-radial from-neutral-600 to-transparent mx-2" />
+                    <AnchorLink href="/terms-of-service" neutral>
+                      Terms of Service
+                    </AnchorLink>
                   </div>
                 </div>
               </div>

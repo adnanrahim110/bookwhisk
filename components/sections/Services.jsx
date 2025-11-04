@@ -12,25 +12,25 @@ import Button from "../ui/Button";
 
 const services = [
   {
-    title: "Manuscript Review & Editing",
+    title: "Built for Indie Authors",
     description:
-      "Professional editors refine your story, ensuring clarity, flow, and polish. From developmental editing to line editing, we perfect every word.",
+      "We started BookWhisk with one goal, to give every author the freedom to publish their story with confidence and pride. Whether you're a first-time writer or an experienced storyteller, we help transform your vision into a beautifully crafted, globally available book that feels truly yours.",
     iconGradient: "from-orange-500 to-rose-500",
-    image: "/imgs/sr1.webp",
+    image: "/imgs/ser_1.avif",
   },
   {
-    title: "Proofreading",
+    title: "Experts Under One Roof",
     description:
-      "Catch every typo, grammatical error, and formatting inconsistency. Our eagle-eyed proofreaders ensure your book is flawless.",
+      "Behind every great book is a great team, and ours works as one. From editors and designers to marketers and distribution specialists, all led by your dedicated project manager, our in-house experts guide your journey with precision, communication, and care. Every detail is handled under one roof to make your publishing experience smooth, personal, and stress-free.",
     iconGradient: "from-rose-500 to-pink-500",
-    image: "/imgs/sr2.webp",
+    image: "/imgs/ser_2.avif",
   },
   {
-    title: "Book Cover & Interior Design",
+    title: "Turning Stories Into Legacies",
     description:
-      "Stunning covers that capture attention and professional interior layouts that enhance readability. First impressions matter.",
+      "We don't just publish books, we help build author brands and lasting impressions. Every story we touch is refined, elevated, and positioned to reach the right readers, ensuring your voice resonates far beyond the final page. With BookWhisk, you're not just launching a book, you're starting something that lasts.",
     iconGradient: "from-orange-500 to-amber-500",
-    image: "/imgs/sr3.webp",
+    image: "/imgs/ser_3.webp",
   },
 ];
 
@@ -57,8 +57,8 @@ const Services = () => {
   return (
     <section
       ref={containerRef}
-      className="relative"
-      style={{ height: `calc(${services.length + 1.3} * 100vh)` }}
+      className="relative bg-primary-50"
+      style={{ height: `calc(${services.length + 1.5} * 100vh)` }}
     >
       <div className="sticky top-0 h-dvh py-32">
         <div className="container">
@@ -70,7 +70,7 @@ const Services = () => {
                     key={activeService.image}
                     src={activeService.image}
                     alt={activeService.title}
-                    className=""
+                    className="rounded-2xl"
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
@@ -81,7 +81,15 @@ const Services = () => {
             </div>
             <div className="lg:w-7/12 w-full">
               <div className="relative">
-                <div className="p-[45px_100px_2px] overflow-hidden">
+                <div className="pl-[75px]">
+                  <h3 className="text-4xl md:text-5xl text-slate-800 font-bold">
+                    Who We Are
+                  </h3>
+                  <p className="text-xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
+                    Your Self-Publishing Partners
+                  </p>
+                </div>
+                <div className="pt-6 pb-0.5 pl-20 overflow-hidden">
                   {services.map((serv, idx) => {
                     const isActive = idx === activeIndex;
 
@@ -98,7 +106,7 @@ const Services = () => {
                           className={cn(
                             "absolute rounded-full z-1",
                             isActive
-                              ? "text-2xl font-medium text-white size-[45px] bg-primary -left-[68px] flex items-center justify-center outline-10 outline-white shadow-[0_0_0_10px_#ffc46d,0_0_0_11.5px_#ffc46d] top-0"
+                              ? "text-2xl font-medium text-white size-[45px] bg-primary -left-[68px] flex items-center justify-center outline-10 outline-primary-50 shadow-[0_0_0_10px_#ffc46d,0_0_0_11.5px_#ffc46d] top-0"
                               : "-left-[52.5px] top-2 size-4 bg-primary-300"
                           )}
                         >
@@ -108,13 +116,15 @@ const Services = () => {
                           className={cn(
                             "text-2xl font-semibold transition-colors sm:text-[28px]",
                             !isActive && idx < services.length - 1 && "mb-4",
-                            isActive ? "text-primary mb-4" : "text-neutral-700"
+                            isActive
+                              ? "text-primary mb-2.5"
+                              : "text-neutral-700"
                           )}
                         >
                           {serv.title}
                         </h3>
                         {isActive && (
-                          <p className="text-lg text-neutral-700 sm:text-xl">
+                          <p className="text-lg text-neutral-700">
                             {serv.description}
                           </p>
                         )}
@@ -122,8 +132,10 @@ const Services = () => {
                     );
                   })}
                 </div>
-                <div className="mt-10 ml-[100px]">
-                  <Button variant="secondary">View all services</Button>
+                <div className="mt-10 ml-20 flex items-center flex-wrap">
+                  <Button href="/contact" className="text-sm">
+                    Begin Your BookWhisk Journey
+                  </Button>
                 </div>
               </div>
             </div>

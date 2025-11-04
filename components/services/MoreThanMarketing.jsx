@@ -1,66 +1,112 @@
-import { MotionInView } from "@/utils/motion";
-import React from "react";
-import { RiBookOpenLine, RiPrinterLine, RiQuillPenLine } from "react-icons/ri";
+"use client";
 
-const items = [
+import { MotionInView } from "@/utils/motion";
+import React, { Fragment } from "react";
+
+const benefits = [
   {
-    title: "Self–Publishing Services",
-    body: "Full creative control. Pro results. Everything you need to publish, promote, and sell – without the stress!",
-    icon: RiBookOpenLine,
+    title: "Unlimited Revisions, Guaranteed Satisfaction",
+    description:
+      "Your satisfaction is our priority, which is why we offer unlimited revisions to get everything just right.",
+    icon: (
+      <svg
+        className="w-full h-full"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
   },
   {
-    title: "Book Printing",
-    body: "From single copy to bulk runs — premium print, fast turnaround, and formats for every kind of author.",
-    icon: RiPrinterLine,
+    title: "100% Retention of Copyrights & Ownership Rights",
+    description:
+      "We help you publish, but your copyrights and ownership remain fully yours.",
+    icon: (
+      <svg
+        className="w-full h-full"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        />
+      </svg>
+    ),
   },
   {
-    title: "Ghostwriting",
-    body: "Your voice, your story — professionally written and built to publish with confidence and credibility.",
-    icon: RiQuillPenLine,
+    title: "100% Retention of Net Royalties",
+    description:
+      "You keep 100% of your net royalties—Books Publishing Company takes no cut from your book sales, ever.",
+    icon: (
+      <svg
+        className="w-full h-full"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+        />
+      </svg>
+    ),
   },
 ];
 
 const MoreThanMarketing = () => {
   return (
-    <section className="py-16 bg-linear-to-b from-white to-primary/5">
-      <div className="container mx-auto px-6">
-        <MotionInView>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 text-center mb-8">
-            More Than Just Marketing
-          </h2>
-        </MotionInView>
+    <section className="py-20 md:py-24 bg-linear-to-b from-primary-50 via-white to-secondary-50 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-40">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-50 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary-50 rounded-full blur-3xl" />
+      </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {items.map((it, idx) => {
-            const Icon = it.icon;
-            return (
-              <MotionInView key={idx} className="">
-                <article className="relative rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg transition-shadow border border-transparent hover:border-primary/20">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-linear-to-br from-primary/50 to-primary/30 text-white flex items-center justify-center shadow-md">
-                      <Icon className="text-xl" />
-                    </div>
+      <div className="container">
+        <div className="grid gap-8 md:grid-cols-[1fr_auto_1fr_auto_1fr]">
+          {benefits.map((benefit, idx) => (
+            <Fragment key={idx}>
+              <MotionInView>
+                <div className="group relative h-full even:px-3">
+                  <article className="relative h-full px-5">
+                    <div className="flex flex-col h-full">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="shrink-0">
+                          <div className="size-12 p-2 rounded-2xl bg-linear-to-br from-primary to-primary/70 text-white flex items-center justify-center">
+                            {benefit.icon}
+                          </div>
+                        </div>
 
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-slate-900">
-                        {it.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-slate-600">{it.body}</p>
-
-                      <div className="mt-4">
-                        <a
-                          href="#"
-                          className="inline-flex items-center text-sm font-medium text-primary hover:underline"
-                        >
-                          Learn more <span className="ml-2">→</span>
-                        </a>
+                        <h3 className="text-lg font-bold text-slate-900 leading-tight">
+                          {benefit.title}
+                        </h3>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-neutral-700 leading-relaxed">
+                          {benefit.description}
+                        </p>
                       </div>
                     </div>
-                  </div>
-                </article>
+                  </article>
+                </div>
               </MotionInView>
-            );
-          })}
+              {idx < benefits.length - 1 && (
+                <div className="h-full w-px bg-radial from-secondary-300 via-transparent to-transparent" />
+              )}
+            </Fragment>
+          ))}
         </div>
       </div>
     </section>

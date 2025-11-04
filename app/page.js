@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import Partner from "@/components/sections/Partner";
 import Portfolio from "@/components/sections/Portfolio";
 import Process from "@/components/sections/Process";
+import PubTypes from "@/components/sections/PubTypes";
 import Services from "@/components/sections/Services";
 import Stats from "@/components/sections/Stats";
 import Team from "@/components/sections/Team";
@@ -14,8 +15,9 @@ export default function Home() {
     <>
       <Hero />
       <Stats />
-      <Process />
+      <PubTypes />
       <Services />
+      <Process />
       <Partner />
       <Portfolio />
       <Team />

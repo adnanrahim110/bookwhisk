@@ -4,13 +4,13 @@ import { forwardRef, useEffect, useId, useRef, useState } from "react";
 import { RiArrowDownSLine, RiCheckLine } from "react-icons/ri";
 
 const buttonBaseClasses =
-  "w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-left text-sm font-medium transition-all outline-none flex items-center justify-between gap-3";
+  "w-full px-4 py-3 rounded-xl border border-slate-300 bg-transparent text-left text-sm font-medium transition-all outline-none flex items-center justify-between gap-3";
 
 const disabledClasses =
   "bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed pointer-events-none";
 
 const listBoxClasses =
-  "absolute left-0 right-0 mt-2 bg-white border border-slate-200 rounded-xl shadow-lg shadow-orange-500/10 max-h-56 overflow-auto z-20";
+  "absolute left-0 right-0 mt-2 bg-white border border-slate-200 rounded-xl shadow-lg shadow-orange-500/10 max-h-56 overflow-auto z-20 scroll_bar";
 
 const optionClasses =
   "flex items-center justify-between px-4 py-3 text-sm text-slate-700 hover:bg-orange-50 cursor-pointer transition-colors";
@@ -37,6 +37,7 @@ const Select = forwardRef(function Select(
   const fieldId = id || name || generatedId;
   const containerRef = useRef(null);
   const buttonRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   const isControlled = value !== undefined;
   const initialValue = isControlled ? value : defaultValue;
@@ -58,12 +59,30 @@ const Select = forwardRef(function Select(
         setOpen(false);
       }
     }
+
+    function handleScroll(event) {
+      if (dropdownRef.current && dropdownRef.current.contains(event.target)) {
+        return;
+      }
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    }
+
     if (open) {
       document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("scroll", handleScroll, true);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("scroll", handleScroll, true);
     }
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("scroll", handleScroll, true);
+    };
   }, [open]);
 
   const selectedOption = options.find(
@@ -114,7 +133,7 @@ const Select = forwardRef(function Select(
           className={[
             buttonBaseClasses,
             disabled ? disabledClasses : "hover:border-orange-400",
-            !selectedOption ? "text-slate-400" : "text-slate-700",
+            !selectedOption ? "text-neutral-400" : "text-neutral-800",
             className,
           ]
             .filter(Boolean)
@@ -135,6 +154,7 @@ const Select = forwardRef(function Select(
         </button>
         {open ? (
           <div
+            ref={dropdownRef}
             className={listBoxClasses}
             role="listbox"
             tabIndex={-1}

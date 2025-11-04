@@ -1,34 +1,10 @@
 "use client";
 
-import { faqs } from "@/public";
+import { FAQS_LIST } from "@/constants";
 import { MotionInView } from "@/utils/motion";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import { RiAddLine, RiSubtractLine } from "react-icons/ri";
-
-const FAQS_LIST = [
-  {
-    q: "How long does the publishing process take?",
-    a: "Typical timelines vary by service. From manuscript to published book, expect 8-14 weeks for a full-service package; shorter for design-only or editing-only services.",
-  },
-  {
-    q: "Can I keep my ISBN and distribution rights?",
-    a: "Yes. We can use your existing ISBN, or provide one. You retain all rights — we only help you distribute and promote your work.",
-  },
-  {
-    q: "Do you offer marketing and distribution?",
-    a: "Absolutely — we handle online distribution, print-on-demand setup, and optional marketing services like book launch plans and advertising.",
-  },
-  {
-    q: "What file formats do you accept for manuscripts?",
-    a: "We accept Word (.doc/.docx), Google Docs, and plain text. For complex layouts, PDFs are fine but may require additional formatting.",
-  },
-  {
-    q: "Can you help with cover design?",
-    a: "Yes — our design team creates custom covers aligned to your genre and audience, with unlimited revisions during the concept stage.",
-  },
-];
 
 const FAQItem = ({ item, isOpen, onToggle, idx }) => {
   const formattedIndex = idx + 1;
@@ -124,7 +100,7 @@ const FAQItem = ({ item, isOpen, onToggle, idx }) => {
             className="overflow-hidden"
             aria-hidden={!isOpen}
           >
-            <div className="px-6 pb-6 pl-[68px] text-neutral-800 text-base">
+            <div className="px-6 pb-6 pl-[68px] text-neutral-800 text-[15px]">
               <div
                 className="prose prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: item.a }}
@@ -166,54 +142,29 @@ const FAQs = () => {
             started on your publishing journey.
           </p>
         </MotionInView>
-        <div className="flex flex-col lg:flex-row justify-between items-center">
-          <div className="w-full lg:w-[51%]">
-            <div className="flex flex-col gap-5">
-              {filtered.map((item, i) => (
-                <MotionInView
-                  key={item.q + i}
-                  as="div"
-                  v={{
-                    hidden: { opacity: 0, x: -30 },
-                    visible: {
-                      opacity: 1,
-                      x: 0,
-                      transition: { duration: 0.6, delay: i * 0.1 },
-                    },
-                  }}
-                >
-                  <FAQItem
-                    item={item}
-                    idx={i}
-                    isOpen={openIndex === i}
-                    onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-                  />
-                </MotionInView>
-              ))}
-            </div>
-          </div>
-          <div className="w-full lg:w-[45%] mt-16 lg:mt-0">
-            <MotionInView
-              className="lg:sticky lg:top-24"
-              v={{
-                hidden: { opacity: 0, x: 50 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  transition: { duration: 0.8, delay: 0.2 },
-                },
-              }}
-            >
-              <div className="relative w-full">
-                <Image
-                  width={856}
-                  height={836}
-                  src={faqs}
-                  alt="Stack of books on a desk"
-                  className="w-full h-auto"
+        <div className="">
+          <div className="flex flex-col gap-5">
+            {filtered.map((item, i) => (
+              <MotionInView
+                key={item.q + i}
+                as="div"
+                v={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.6, delay: i * 0.1 },
+                  },
+                }}
+              >
+                <FAQItem
+                  item={item}
+                  idx={i}
+                  isOpen={openIndex === i}
+                  onToggle={() => setOpenIndex(openIndex === i ? null : i)}
                 />
-              </div>
-            </MotionInView>
+              </MotionInView>
+            ))}
           </div>
         </div>
       </div>

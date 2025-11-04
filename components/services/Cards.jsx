@@ -14,7 +14,7 @@ const Cards = () => {
       <div className="container relative z-1 space-y-16">
         {["Publish Your Book with Confidence", "Launch and Grow Your Book"].map(
           (title, colIdx) => {
-            const chunk = services.slice(colIdx * 9, colIdx * 9 + 9);
+            const chunk = services.slice(colIdx * 8, colIdx * 8 + 8);
             return (
               <Fragment>
                 <div className="text-center max-w-5xl mx-auto">

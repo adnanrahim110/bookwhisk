@@ -1,25 +1,23 @@
 "use client";
 
-import { foot } from "@/public";
-import Image from "next/image";
 import Button from "../ui/Button";
 
 const points = [
   {
-    label: "Seamless Publishing Journey",
-    text: "From manuscript polish to distribution — we handle the heavy lifting so you can create.",
+    label: "Age-Appropriate Storytelling",
+    text: "Speaks the language of its age group, inviting curiosity, comfort, and wonder through age-appropriate vocabulary and pacing.",
   },
   {
-    label: "Diverse Storytelling Styles",
-    text: "From manuscript polish to distribution — we handle the heavy lifting so you can create.",
+    label: "Story-Driven Illustrations",
+    text: "Aligns illustrations and text seamlessly, so that every visual detail complements the storytelling and keeps young readers engaged.",
   },
   {
-    label: "Global Support for Authors",
-    text: "From manuscript polish to distribution — we handle the heavy lifting so you can create.",
+    label: "Professionally Published Quality",
+    text: "Meets professional publishing standards for both digital and print formats, ensuring durability, readability, and quality presentation across all platforms.",
   },
   {
-    label: "Visually Stunning Designs",
-    text: "From manuscript polish to distribution — we handle the heavy lifting so you can create.",
+    label: "Building Your Author Brand",
+    text: "Builds your author brand in the children’s market, positioning your story among those that nurture young minds and spark lifelong readers.",
   },
 ];
 
@@ -116,17 +114,26 @@ const Icon = ({ id }) => {
 const Sec3 = () => {
   return (
     <section className="relative overflow-hidden bg-cover bg-center bg-no-repeat bg-[url(/imgs/child-sec3.avif)] py-20 lg:py-28">
-      <div className="absolute inset-0 bg-linear-to-t from-black/45 via-black/25 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/45 via-black/25 to-black/45 pointer-events-none" />
 
       <div className="container relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight drop-shadow-lg">
-            Why Choose Our Children's Book Publishing Service?
+            Why Children’s Books Need Special Care
           </h2>
-          <p className="mt-4 text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-            We combine creative excellence, market expertise and white-glove
-            service to take your children's book from idea to shelf —
-            beautifully.
+          <p className="mt-4 text-base sm:text-lg md:text-xl text-white/90">
+            Creating a children’s book isn’t just about writing a story and
+            adding illustrations, it’s about crafting an experience that shapes
+            young imaginations and leaves a lasting impression. Every word,
+            color, and character matters because children’s books are often a
+            child’s first introduction to the magic of reading.
+          </p>
+          <p className="mt-2 text-base sm:text-lg md:text-xl text-white/90">
+            A successful children’s book captures hearts on multiple levels, it
+            speaks directly to kids while also resonating with parents,
+            teachers, and librarians who bring these stories to life in homes,
+            classrooms, and libraries. At BookWhisk, we understand that balance
+            deeply.
           </p>
         </div>
 
@@ -166,21 +173,11 @@ const Sec3 = () => {
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
                 Get Started With Your Book Today!
               </h2>
-              <p className="text-base md:text-lg text-neutral-100 mb-2">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit
-                doloremque magnam hic est. Maiores dicta natus rem officiis
-                exercitationem neque pariatur suscipit iste in quaerat, facilis
-                architecto illum quod aliquid alias nostrum itaque. Hic ad animi
-                quam deserunt quibusdam incidunt dolore nulla mollitia repellat
-                earum vel suscipit eum voluptatum laudantium repudiandae
-                quisquam culpa, voluptas minima facere optio. Laboriosam tenetur
-                quisquam incidunt, officiis excepturi sapiente? Nam beatae autem
-                vero consequuntur saepe?
-              </p>
               <p className="text-base md:text-lg text-neutral-100">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Exercitationem id autem ut nesciunt debitis rerum sapiente
-                pariatur, dolorum molestias ab.
+                With BookWhisk, you’re not just creating a book, you’re building
+                a world child will love to return to. Our mission is to combine
+                creative magic with publishing precision, so your story not only
+                shines but becomes a cherished part of childhood memories.
               </p>
             </div>
           </div>

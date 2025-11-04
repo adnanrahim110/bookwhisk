@@ -84,15 +84,14 @@ const Process = () => {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="pt-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       <div className="absolute z-0 top-1/2 -translate-y-1/2 -right-1/4 h-full aspect-square bg-radial from-primary-200 via-primary-50/50 to-white rounded-full blur-3xl" />
       <div className="container relative z-1">
         <div className="text-center mb-16">
-          <Subtitle>The Bookwhisk Process</Subtitle>
-          <h2 className="text-4xl md:text-5xl font-serif text-slate-800 mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif text-slate-800 mb-1">
             How It Works
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-600 leading-relaxed">
             From first conversation to published book, we make the journey
             smooth and stress-free.
           </p>
@@ -155,7 +154,7 @@ const Process = () => {
                     </div>
                   </div>
                   <div>
-                    <Button className="*:text-sm shadow-none">
+                    <Button href="/signup" className="*:text-sm shadow-none">
                       Get Started
                     </Button>
                   </div>
@@ -167,6 +166,7 @@ const Process = () => {
                   height={494}
                   src={steps[active].image}
                   alt=""
+                  className="drop-shadow-lg"
                 />
               </div>
             </div>

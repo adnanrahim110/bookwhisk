@@ -6,7 +6,7 @@ const Sec2 = () => {
   return (
     <section className="py-28">
       <div className="container">
-        <div className="mx-auto max-w-3xl">
+        <div className="">
           <Image width={3427} height={2451} src={child_sec2} alt="" />
         </div>
       </div>

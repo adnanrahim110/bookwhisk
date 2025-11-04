@@ -84,11 +84,11 @@ const Partner = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="lg:col-span-2 text-center">
             <Subtitle>Why Bookwhisk</Subtitle>
-            <h2 className="text-4xl md:text-5xl text-slate-800">
-              Publishing has never been this effortless. We whisk away the hard
-              parts of publishing.
+            <h2 className="text-4xl md:text-5xl text-slate-800 mb-3">
+              Publishing has never been this effortless. <br /> We whisk away
+              the hard parts of publishing.
             </h2>
-            <p className="text-xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg text-neutral-700 max-w-5xl mx-auto">
               Every book deserves a team that believes in it. At Bookwhisk, we
               match each author with editors, designers, and genre-specialist
               artists who understand their story’s soul. It’s a collaborative

@@ -77,37 +77,12 @@ const Header = () => {
             })}
           </nav>
           <div className="flex items-center gap-5 justify-end">
-            {navItems.slice(-1).map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    "text-base font-medium inline-block relative",
-                    isActive
-                      ? "text-primary"
-                      : isDark && isAtTop
-                      ? "text-neutral-100 hover:text-white"
-                      : "text-slate-700 hover:text-black",
-                    "before:absolute before:top-full before:left-0 before:h-0.5 before:transition-all before:duration-250 before:ease-linear",
-                    isActive
-                      ? "before:w-full before:bg-primary"
-                      : isDark && isAtTop
-                      ? "before:w-0 before:bg-white hover:before:w-full"
-                      : "before:w-0 before:bg-black hover:before:w-full"
-                  )}
-                >
-                  {item.name}
-                </Link>
-              );
-            })}
             <Link
-              href="/contact"
+              href="/signup"
               className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-6 py-2.5 text-base font-semibold text-white shadow-[0_3px_10px_rgba(249,115,22,0.3)] transition-colors hover:bg-orange-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
               onClick={() => setOpenDropdown(null)}
             >
-              Get Started
+              Sign-Up Now
             </Link>
           </div>
         </div>

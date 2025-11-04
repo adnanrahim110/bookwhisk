@@ -20,13 +20,13 @@ const Hero = () => {
           </h1>
           <p className="mx-auto max-w-4xl mb-4">
             A publishing experience crafted for authors who care about quality.
-            From the first edit to the final sale, Bookwhisk blends precision
-            and passion, all whisked together in one intuitive platform made for
-            indie authors.
+            From the first edit to the final sale, <br /> Bookwhisk blends
+            precision and passion, all whisked together in one intuitive
+            platform made for indie authors.
           </p>
           <div className="flex items-center justify-center">
             <Button
-              href="#contact"
+              href="/contact"
               variant="primary"
               className="bg-emerald-400 hover:bg-emerald-500 shadow-emerald-400/30"
             >
@@ -45,8 +45,8 @@ const Hero = () => {
           />
         </div>
         <div className="absolute left-1/2 w-full -translate-x-1/2 flex items-center justify-between z-0">
-          <div className="absolute top-0 left-0 h-full w-2/5 bg-linear-to-r from-white via-white/20 to-transparent z-8" />
-          <div className="absolute top-0 right-0 h-full w-2/5 bg-linear-to-l from-white via-white/20 to-transparent z-8" />
+          <div className="absolute top-0 left-0 h-full w-2/5 bg-linear-to-r from-white/90 via-white/10 to-transparent z-8" />
+          <div className="absolute top-0 right-0 h-full w-2/5 bg-linear-to-l from-white/90 via-white/10 to-transparent z-8" />
           <div className="md:w-[570px] flex relative items-center flex-nowrap justify-center">
             {[...Array(4)].map((_, idx) => (
               <div

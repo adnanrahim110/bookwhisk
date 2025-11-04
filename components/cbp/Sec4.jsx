@@ -7,24 +7,24 @@ import Button from "../ui/Button";
 
 const bullets = [
   {
-    title: "Expert Storytelling:",
-    text: "Our seasoned children's book writers craft engaging narratives that capture young imaginations and bring your vision to life with charm and creativity.",
+    title: "Concept & Storyboarding",
+    text: "We begin by exploring your idea, characters, setting, lesson, tone, and reader age. Together, we storyboard each page or chapter to ensure pacing, visuals, and messaging are clear and captivating.",
   },
   {
-    title: "Full-Service Publishing:",
-    text: "From initial concept and detailed outlining to seamless editing, flawless formatting, invigorating illustrations and strategic marketing, we handle every step of your book's journey.",
+    title: "Writing & Illustration Collaboration",
+    text: "Our genre-specialist children’s writers craft the manuscript with rhythm, readability, and emotional resonance. Simultaneously, our illustrators develop visual concepts that delight and support comprehension. You review drafts of text and artwork, ensuring your vision shines through.",
   },
   {
-    title: "Editorial Excellence:",
-    text: "Our dedicated children's book editors provide professional insights, refining your manuscript for clarity, engagement, and readability.",
+    title: "Editing, Revision & Layout",
+    text: "Once text and artwork align, we apply professional editing for readability, consistency, and age-appropriateness. Then we format the book for print and eBook, choosing durable materials for board books, interactive layouts for picture books, and reader-friendly designs for chapter and middle-grade titles.",
   },
   {
-    title: "Tailored to Your Vision:",
-    text: "Every book is unique, and we match you with a writer and illustrator who align with your style, ensuring your story is brought to life exactly as you envisioned.",
+    title: "Proofing & Publishing Setup",
+    text: "Your book is proofed for both visual and text accuracy. We prepare final files and set up print-on-demand (POD) and digital distribution channels so your book is available globally, even before releasing into school and library markets.",
   },
   {
-    title: "Hassle-Free Publishing:",
-    text: "We navigate the self-publishing process for you, ensuring your book lands in top online stores and reaches young readers across the globe.",
+    title: "Launch & Beyond",
+    text: "With your book live, we offer optional marketing and distribution support designed for children’s books, social media posts parents engage with, school/library reach strategies, and press materials that capture attention in the market of young readers.",
   },
 ];
 
@@ -40,14 +40,14 @@ const Sec4 = () => {
                 height={1080}
                 src={sec4}
                 alt="Children's book illustration"
-                className="w-full h-auto block rounded-2xl shadow-[0_30px_60px_rgba(2,6,23,0.12)]"
+                className="w-full h-auto block"
               />
             </div>
           </div>
 
           <div className="text-left">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
-              Comprehensive Children's Book Publishing Services
+              Our Children’s Book Workflow
             </h2>
 
             <ul className="space-y-4 text-slate-700">

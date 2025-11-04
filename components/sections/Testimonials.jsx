@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "@/components/ui/Button";
 import { reviews } from "@/constants";
 import { Star } from "lucide-react";
 import Image from "next/image";
@@ -13,9 +12,6 @@ const Testimonials = () => {
     <section className="py-24 bg-white overflow-hidden">
       <div className="container">
         <div className="text-center mb-16">
-          <div className="inline-block bg-orange-100 text-orange-800 px-5 py-2 rounded-full text-sm font-medium mb-4">
-            Success Stories
-          </div>
           <h2 className="text-4xl md:text-5xl font-serif text-slate-800 mb-6">
             Authors Love Working With Us
           </h2>
@@ -89,24 +85,6 @@ const Testimonials = () => {
             </div>
           );
         })}
-      </div>
-      <div className="container">
-        <div className="mt-16 bg-linear-to-br from-orange-500 to-rose-500 p-12 rounded-3xl text-center shadow-2xl">
-          <h3 className="text-3xl font-serif text-white mb-4">
-            Ready to Join Our Success Stories?
-          </h3>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Let's turn your manuscript into a published book that readers will
-            love.
-          </p>
-          <Button
-            href="/contact"
-            variant="tertiary"
-            className="px-10 py-4 text-lg"
-          >
-            Start Your Publishing Journey
-          </Button>
-        </div>
       </div>
     </section>
   );
