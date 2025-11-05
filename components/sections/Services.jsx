@@ -82,10 +82,10 @@ const Services = () => {
             <div className="lg:w-7/12 w-full">
               <div className="relative">
                 <div className="pl-[75px]">
-                  <h3 className="text-4xl md:text-5xl text-slate-800 font-bold">
+                  <h3 className="text-4xl xl:text-5xl text-slate-800 font-bold">
                     Who We Are
                   </h3>
-                  <p className="text-xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
+                  <p className="lg:text-lg xl:text-xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
                     Your Self-Publishing Partners
                   </p>
                 </div>
@@ -114,7 +114,7 @@ const Services = () => {
                         </span>
                         <h3
                           className={cn(
-                            "text-2xl font-semibold transition-colors sm:text-[28px]",
+                            "text-2xl font-semibold transition-colors xl:text-[28px]",
                             !isActive && idx < services.length - 1 && "mb-4",
                             isActive
                               ? "text-primary mb-2.5"
@@ -124,7 +124,7 @@ const Services = () => {
                           {serv.title}
                         </h3>
                         {isActive && (
-                          <p className="text-lg text-neutral-700">
+                          <p className="xl:text-lg text-neutral-700">
                             {serv.description}
                           </p>
                         )}

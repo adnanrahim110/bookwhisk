@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { BadgeCheck, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-import { navigation_links, services } from "@/constants";
 import { LoaderLink } from "@/components/ui/NavigationLoader";
+import { navigation_links, services } from "@/constants";
 import { ae, d, logo, mc, pp, s, v } from "@/public";
 import { cn } from "@/utils/cn";
 
@@ -11,11 +11,6 @@ const companyLinks = navigation_links.filter(
   ({ name }) =>
     name !== "Services" && name !== "Home" && !name.startsWith("Child")
 );
-
-const footerLinks = [
-  { href: "#", label: "Privacy Policy" },
-  { href: "#", label: "Terms of Service" },
-];
 
 const AnchorLink = ({ href, children, neutral = false }) => {
   const pathname = usePathname();
@@ -32,7 +27,7 @@ const AnchorLink = ({ href, children, neutral = false }) => {
         "before:absolute before:top-full before:left-0 before:h-px before:transition-all before:duration-250 before:ease-linear",
         neutral
           ? "before:bg-black text-sm font-medium"
-          : "before:bg-primary text-base",
+          : "before:bg-primary text-sm xl:text-base",
         isActive
           ? "before:w-full text-primary before:bg-primary!"
           : `before:w-0 hover:before:w-full ${textColor}`
@@ -48,9 +43,9 @@ const Footer = () => {
     <footer className="bg-white pb-5">
       <div className="container">
         <div className="rounded-2xl border border-primary-200 overflow-hidden">
-          <div className="px-10 pb-14 pt-20 bg-linear-to-r from-secondary-50 via-white to-white">
+          <div className="px-5 pt-12 pb-8 xl:px-10 xl:pb-14 xl:pt-20 bg-linear-to-r from-secondary-50 via-white to-white">
             <div className="flex flex-wrap justify-between items-start">
-              <div className="w-full md:w-1/2 lg:w-[21%] -mt-7">
+              <div className="w-full md:w-1/2 lg:w-[23%] xl:w-[21%] -mt-4 xl:-mt-7">
                 <div className="flex flex-col gap-2">
                   <LoaderLink href="/">
                     <Image
@@ -61,7 +56,7 @@ const Footer = () => {
                       className="w-full h-auto"
                     />
                   </LoaderLink>
-                  <p className="text-sm xl:text-[15px]">
+                  <p className="text-[13px] xl:text-[15px]">
                     At BookWhisk, we make self-publishing simple, transparent,
                     and empowering. From writing and editing to design,
                     publishing, and global distribution, we help authors turn
@@ -73,7 +68,7 @@ const Footer = () => {
                 <h4 className="text-xl font-semibold text-slate-700 mb-3">
                   Company
                 </h4>
-                <ul className="space-y-1.5 text-sm text-slate-600">
+                <ul className="xl:space-y-1.5 text-slate-600">
                   {companyLinks.map((c) => (
                     <li key={c.name}>
                       <AnchorLink href={c.href}>{c.name}</AnchorLink>
@@ -84,7 +79,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div className="w-full lg:w-[35%]">
+              <div className="w-full lg:w-[38%] xl:w-[35%]">
                 <div className="flex flex-wrap justify-between items-end">
                   <div className="w-2/5">
                     <h4 className="text-xl font-semibold text-slate-700 mb-3">
@@ -115,7 +110,7 @@ const Footer = () => {
                     Get in Touch
                   </h4>
                   <div className=" text-slate-600 space-y-3">
-                    <div className="flex items-start gap-1.5">
+                    <div className="flex items-start gap-1.5 text-sm xl:text-base">
                       <div className="shrink-0">
                         <Mail size={16} className="mt-1 text-secondary" />
                       </div>
@@ -123,7 +118,7 @@ const Footer = () => {
                         info@bookwhisk.com
                       </div>
                     </div>
-                    <div className="flex items-start gap-1.5">
+                    <div className="flex items-start gap-1.5 text-sm xl:text-base">
                       <div className="shrink-0">
                         <Phone size={16} className="mt-1 text-secondary" />
                       </div>
@@ -131,7 +126,7 @@ const Footer = () => {
                         Support: +1 (407) 966-9398
                       </div>
                     </div>
-                    <div className="flex items-start gap-1.5">
+                    <div className="flex items-start gap-1.5 text-sm xl:text-base">
                       <div className="shrink-0">
                         <MapPin size={16} className="mt-1 text-secondary" />
                       </div>
@@ -150,9 +145,9 @@ const Footer = () => {
             </div>
           </div>
           <div className="border-t border-t-primary-200 bg-linear-to-l from-primary-50 via-white to-white">
-            <div className="p-10">
+            <div className="px-5 py-7 xl:p-10">
               <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
-                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start lg:w-[65%]">
                   <div className="flex items-start gap-2">
                     <div className="shrink-0 text-secondary">
                       <ShieldCheck size={40} />
@@ -178,7 +173,7 @@ const Footer = () => {
                   </div>
                 </div>
 
-                <div className="flex-1 flex flex-col md:items-end md:justify-center">
+                <div className="lg:w-[35%] flex flex-col md:items-end md:justify-center">
                   <div className="flex items-center gap-4">
                     {[mc, v, pp, s].map((c, idx) => (
                       <Image

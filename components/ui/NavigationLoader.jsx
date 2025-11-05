@@ -32,6 +32,36 @@ const overlayTransition = {
   ease: [0.24, 0.84, 0.25, 1],
 };
 
+const FALLBACK_DELAY = MIN_VISIBLE_MS + TRANSITION_MS + 150;
+
+const toHrefString = (href) => {
+  if (typeof href === "string") return href;
+  if (!href || typeof href !== "object") return null;
+
+  const { pathname = "/", query, hash } = href;
+  let search = "";
+
+  if (query && typeof query === "object") {
+    const params = new URLSearchParams();
+    Object.entries(query).forEach(([key, value]) => {
+      if (value === undefined || value === null) return;
+      if (Array.isArray(value)) {
+        value.forEach((item) => params.append(key, String(item)));
+      } else {
+        params.append(key, String(value));
+      }
+    });
+
+    const serialized = params.toString();
+    if (serialized) search = `?${serialized}`;
+  }
+
+  const hashFragment =
+    typeof hash === "string" && hash.length ? `#${hash.replace(/^#/, "")}` : "";
+
+  return `${pathname}${search}${hashFragment}`;
+};
+
 const shouldTriggerLoader = (event, href, target) => {
   if (event.defaultPrevented) return false;
   if (event.button !== 0) return false;
@@ -165,6 +195,24 @@ export const LoaderLink = forwardRef(function LoaderLink(
   ref
 ) {
   const { showLoader } = useNavigationLoader();
+  const fallbackNavRef = useRef(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    return () => {
+      if (fallbackNavRef.current) {
+        clearTimeout(fallbackNavRef.current);
+        fallbackNavRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (fallbackNavRef.current) {
+      clearTimeout(fallbackNavRef.current);
+      fallbackNavRef.current = null;
+    }
+  }, [pathname]);
 
   const handleClick = useCallback(
     (event) => {
@@ -174,6 +222,31 @@ export const LoaderLink = forwardRef(function LoaderLink(
 
       if (shouldTriggerLoader(event, href, target)) {
         showLoader();
+
+        if (typeof window !== "undefined") {
+          const hrefString = toHrefString(href);
+          if (!hrefString) return;
+
+          const targetUrl = new URL(hrefString, window.location.href);
+          const sameOrigin = targetUrl.origin === window.location.origin;
+
+          if (fallbackNavRef.current) {
+            clearTimeout(fallbackNavRef.current);
+          }
+
+          if (sameOrigin) {
+            const startHref = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+            fallbackNavRef.current = window.setTimeout(() => {
+              const currentHref = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+              if (currentHref === startHref) {
+                window.location.href =
+                  targetUrl.pathname + targetUrl.search + targetUrl.hash;
+              }
+            }, FALLBACK_DELAY);
+          }
+        }
       }
     },
     [href, onClick, showLoader, target]

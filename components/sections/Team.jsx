@@ -59,14 +59,14 @@ const Team = () => {
                 <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                   Your Dedicated Project Manager
                 </h3>
-                <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
+                <p className="text-lg xl:text-xl text-slate-600 leading-relaxed">
                   Every author gets a personal project manager who coordinates
                   all aspects of your publishing journey. <br /> One point of
                   contact, seamless communication, and peace of mind.
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-4 mt-12">
+              <div className="grid md:grid-cols-3 gap-3 xl:gap-4 mt-12">
                 {projectManagerHighlights.map((highlight, index) => (
                   <div key={highlight} className="group/item relative">
                     <div className="absolute inset-0 bg-linear-to-br from-orange-100 to-rose-100 rounded-2xl opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
@@ -79,7 +79,7 @@ const Team = () => {
                           </span>
                         </div>
                         <div className="flex-1">
-                          <p className="text-slate-800 font-medium leading-relaxed">
+                          <p className="text-slate-800 font-medium leading-relaxed text-sm xl:text-base">
                             {highlight}
                           </p>
                         </div>
@@ -87,24 +87,6 @@ const Team = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-12 pt-8 border-t border-slate-200">
-                <div className="flex items-center justify-center gap-3 text-sm text-slate-600">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div
-                        key={i}
-                        className="w-8 h-8 rounded-full bg-linear-to-br from-orange-400 to-rose-400 border-2 border-white flex items-center justify-center text-white text-xs font-bold"
-                      >
-                        {i}
-                      </div>
-                    ))}
-                  </div>
-                  <span className="font-medium">
-                    Trusted by 1,000+ authors worldwide
-                  </span>
-                </div>
               </div>
             </div>
           </div>

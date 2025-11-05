@@ -34,12 +34,12 @@ const Stats = () => {
                     aria-hidden="true"
                   />
                 </div>
-                <div className="md:ml-6 mt-3 md:mt-0">
+                <div className="md:ml-4 xl:ml-6 mt-3 md:mt-0">
                   <div className="text-4xl md:text-5xl font-bold text-slate-900">
                     {value}
                   </div>
                   <div
-                    className="mt-2 text-lg leading-snug text-slate-600"
+                    className="mt-2 text-base xl:text-lg leading-snug text-slate-600"
                     dangerouslySetInnerHTML={{ __html: label }}
                   />
                 </div>

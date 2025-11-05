@@ -121,7 +121,7 @@ const Process = () => {
                   </span>
                   <h3
                     className={cn(
-                      "text-[22px] transition-colors duration-300 mb-1",
+                      "text-xl xl:text-[22px] transition-colors duration-300 mb-1",
                       active === idx
                         ? "text-black"
                         : "text-black/65 group-hover/active:text-neutral-900"
@@ -136,7 +136,7 @@ const Process = () => {
               <div className="lg:w-[33%]">
                 <div className="flex flex-col justify-between h-full gap-5">
                   <div className="space-y-5">
-                    <h3 className="text-neutral-900 text-3xl">
+                    <h3 className="text-neutral-900 text-2xl xl:text-3xl">
                       {steps[active].title}
                     </h3>
                     <div className="space-y-4">
@@ -147,7 +147,9 @@ const Process = () => {
                             <div className="shrink-0 mt-1 text-primary">
                               <Icon />
                             </div>
-                            <div className="text-neutral-700">{item.text}</div>
+                            <div className="text-neutral-700 text-sm xl:text-base">
+                              {item.text}
+                            </div>
                           </div>
                         );
                       })}
