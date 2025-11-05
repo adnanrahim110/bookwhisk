@@ -1,7 +1,8 @@
 "use client";
 
 import { ChevronRight } from "lucide-react";
-import Link from "next/link";
+
+import { LoaderLink } from "@/components/ui/NavigationLoader";
 
 const baseClasses =
   "inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-base xl:text-xl transition-all whitespace-nowrap group/btn";
@@ -60,11 +61,11 @@ const Button = ({
 
   if (isLink) {
     const linkProps = disabled
-      ? { "aria-disabled": true, tabIndex: -1 }
+      ? { "aria-disabled": true, tabIndex: -1, role: "link" }
       : undefined;
 
     return (
-      <Link
+      <LoaderLink
         href={href}
         target={target}
         className={classes}
@@ -72,7 +73,7 @@ const Button = ({
         {...rest}
       >
         {content}
-      </Link>
+      </LoaderLink>
     );
   }
 

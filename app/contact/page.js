@@ -1,5 +1,6 @@
 import { Info, MessageCircle, Phone } from "lucide-react";
-import Link from "next/link";
+
+import { LoaderLink } from "@/components/ui/NavigationLoader";
 
 export const metadata = {
   title: "Contact Us | BookWhisk - Self-Publishing Facilitators",
@@ -20,7 +21,7 @@ const ContactPage = () => {
           </div>
 
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6 md:gap-8">
-            <Link
+            <a
               href="tel:+14079669398"
               className="block bg-white border border-neutral-200 rounded-2xl p-8 md:p-10 hover:border-primary-200 hover:shadow-lg hover:shadow-primary-100/50 transition-all duration-300"
             >
@@ -39,9 +40,9 @@ const ContactPage = () => {
                   the right plan, and answer any publishing-related inquiries.
                 </p>
               </div>
-            </Link>
+            </a>
 
-            <Link
+            <LoaderLink
               href="/signup"
               className="block bg-white border border-neutral-200 rounded-2xl p-8 md:p-10 hover:border-primary-200 hover:shadow-lg hover:shadow-primary-100/50 transition-all duration-300"
             >
@@ -60,7 +61,7 @@ const ContactPage = () => {
                   non-publishing topics, our team is here to assist you.
                 </p>
               </div>
-            </Link>
+            </LoaderLink>
           </div>
         </div>
       </section>

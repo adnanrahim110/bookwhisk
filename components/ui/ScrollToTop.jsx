@@ -37,7 +37,7 @@ const ScrollToTop = () => {
     <button
       onClick={scrollToTop}
       className={cn(
-        "fixed bottom-8 right-8 z-50 w-14 h-14 group",
+        "fixed bottom-24 right-[27px] z-50 w-14 h-14 group",
         "transition-all duration-300",
         showScrollTop
           ? "opacity-100 translate-y-0"

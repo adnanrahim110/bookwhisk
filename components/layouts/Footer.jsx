@@ -1,10 +1,11 @@
+import Image from "next/image";
+import { BadgeCheck, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { usePathname } from "next/navigation";
+
 import { navigation_links, services } from "@/constants";
+import { LoaderLink } from "@/components/ui/NavigationLoader";
 import { ae, d, logo, mc, pp, s, v } from "@/public";
 import { cn } from "@/utils/cn";
-import { BadgeCheck, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const companyLinks = navigation_links.filter(
   ({ name }) =>
@@ -24,7 +25,7 @@ const AnchorLink = ({ href, children, neutral = false }) => {
     : "text-neutral-800 hover:text-primary";
 
   return (
-    <Link
+    <LoaderLink
       href={href}
       className={cn(
         "inline-block relative transition-all duration-300 ease-in-out",
@@ -38,7 +39,7 @@ const AnchorLink = ({ href, children, neutral = false }) => {
       )}
     >
       {children}
-    </Link>
+    </LoaderLink>
   );
 };
 
@@ -51,7 +52,7 @@ const Footer = () => {
             <div className="flex flex-wrap justify-between items-start">
               <div className="w-full md:w-1/2 lg:w-[21%] -mt-7">
                 <div className="flex flex-col gap-2">
-                  <Link href="/">
+                  <LoaderLink href="/">
                     <Image
                       width={400}
                       height={150}
@@ -59,7 +60,7 @@ const Footer = () => {
                       alt="Bookwhisk"
                       className="w-full h-auto"
                     />
-                  </Link>
+                  </LoaderLink>
                   <p className="text-sm xl:text-[15px]">
                     At BookWhisk, we make self-publishing simple, transparent,
                     and empowering. From writing and editing to design,

@@ -550,6 +550,7 @@ export const services = [
         }
       ]
     },
+    beforeAfter: {},
     cta: {
       title: "Your story deserves a format that matches its quality",
       text: "Turn your manuscript into a professional-grade book ready for readers, retailers, and libraries.",

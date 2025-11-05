@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LoaderLink } from "@/components/ui/NavigationLoader";
 
 const CallToAction = () => {
   return (
@@ -16,12 +16,12 @@ const CallToAction = () => {
               Submit your manuscript and unlock a personalized publishing strategy session with our experts.
             </p>
           </div>
-          <Link
+          <LoaderLink
             href="/contact"
             className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-base font-semibold text-orange-600 shadow-[0_12px_24px_rgba(255,255,255,0.32)] transition-transform hover:-translate-y-0.5"
           >
             Start Your Publishing Journey
-          </Link>
+          </LoaderLink>
         </div>
       </div>
     </section>

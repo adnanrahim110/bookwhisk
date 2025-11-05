@@ -1,21 +1,20 @@
 "use client";
 
-import { cn } from "@/utils/cn";
+import { useState } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
-  BookOpen,
   CheckCircle,
   Mail,
-  MessageSquare,
   Phone,
   Sparkles,
   User,
 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
 
-const SignupPage = () => {
+import { LoaderLink } from "@/components/ui/NavigationLoader";
+import { cn } from "@/utils/cn";
+
+const PageLayout = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -58,7 +57,7 @@ const SignupPage = () => {
           <div className="absolute inset-0 bg-[url('/imgs/hero-img.avif')] bg-cover bg-center opacity-10" />
 
           <div className="relative z-10 max-w-lg">
-            <Link href="/" className="inline-block mb-8">
+            <LoaderLink href="/" className="inline-block mb-8">
               <Image
                 src="/imgs/logo.avif"
                 alt="BookWhisk"
@@ -66,7 +65,7 @@ const SignupPage = () => {
                 height={60}
                 className="h-10 w-auto brightness-0 invert"
               />
-            </Link>
+            </LoaderLink>
 
             <h2 className="text-3xl xl:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
               Transform Your Manuscript Into a Published Masterpiece
@@ -105,7 +104,7 @@ const SignupPage = () => {
         <div className="size-full flex items-center justify-center p-12">
           <div className="size-full">
             <div className="lg:hidden mb-8 text-center">
-              <Link href="/" className="inline-block">
+              <LoaderLink href="/" className="inline-block">
                 <Image
                   src="/imgs/logo.avif"
                   alt="BookWhisk"
@@ -113,7 +112,7 @@ const SignupPage = () => {
                   height={60}
                   className="h-10 w-auto mx-auto"
                 />
-              </Link>
+              </LoaderLink>
             </div>
 
             <div className="bg-white/80 h-full backdrop-blur-xl rounded-3xl p-6 lg:p-8 border border-orange-100 shadow-2xl shadow-primary-500/10">
@@ -278,12 +277,12 @@ const SignupPage = () => {
                     className="text-sm text-gray-600 leading-relaxed cursor-pointer"
                   >
                     I consent to receive text messages and agree to the{" "}
-                    <Link
+                    <LoaderLink
                       href="/terms"
                       className="text-primary-600 hover:text-primary-700 underline"
                     >
                       Terms of Service
-                    </Link>
+                    </LoaderLink>
                   </label>
                 </div>
 
@@ -313,19 +312,19 @@ const SignupPage = () => {
 
                 <p className="text-sm text-center text-gray-500 leading-relaxed">
                   By signing up, you agree to our{" "}
-                  <Link
+                  <LoaderLink
                     href="/terms"
                     className="text-primary-600 hover:text-primary-700"
                   >
                     Terms
-                  </Link>{" "}
+                  </LoaderLink>{" "}
                   and{" "}
-                  <Link
+                  <LoaderLink
                     href="/privacy"
                     className="text-primary-600 hover:text-primary-700"
                   >
                     Privacy Policy
-                  </Link>
+                  </LoaderLink>
                 </p>
               </form>
             </div>
@@ -342,4 +341,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default PageLayout;

@@ -1,10 +1,11 @@
 "use client";
 
-import { services } from "@/constants";
-import { Check, ChevronRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 import { Fragment } from "react";
+import Image from "next/image";
+import { Check, ChevronRight } from "lucide-react";
+
+import { services } from "@/constants";
+import { LoaderLink } from "@/components/ui/NavigationLoader";
 
 const Cards = () => {
   return (
@@ -16,14 +17,14 @@ const Cards = () => {
           (title, colIdx) => {
             const chunk = services.slice(colIdx * 8, colIdx * 8 + 8);
             return (
-              <Fragment>
+              <Fragment key={title}>
                 <div className="text-center max-w-5xl mx-auto">
                   <h2 className="text-2xl md:text-5xl">{title}</h2>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
                   {chunk.map((srv, idx) => (
                     <div
-                      key={idx}
+                      key={srv.href ?? idx}
                       className="rounded-2xl bg-transparent relative h-full"
                     >
                       <div className="absolute inset-0 bg-linear-to-r from-primary-200 to-neutral-200 blur-[2px] rounded-2xl" />
@@ -39,12 +40,12 @@ const Cards = () => {
                             />
                           </div>
                           <h3 className="text-[22px]">
-                            <Link
+                            <LoaderLink
                               href={srv.href}
                               className="hover:text-primary pb-1 transition-all duration-300 ease-in-out relative inline-block before:h-0.5 before:w-0 before:absolute before:top-full before:left-0 before:bg-primary hover:before:w-full before:transition-all before:duration-200 before:ease-linear"
                             >
                               {srv.card.title}
-                            </Link>
+                            </LoaderLink>
                           </h3>
                           <p className="text-neutral-800">{srv.card.text}</p>
                           <ul className="space-y-2">
@@ -64,7 +65,7 @@ const Cards = () => {
                           </ul>
                         </div>
                         <div className="mt-4 pt-3 border-t border-t-neutral-200">
-                          <Link
+                          <LoaderLink
                             href={srv.href}
                             className="inline-flex text-lg pl-2 items-end leading-none font-semibold group/link justify-start text-black hover:text-primary-700 transition-all duration-300 ease-in-out"
                           >
@@ -81,7 +82,7 @@ const Cards = () => {
                                 className="-translate-x-2.5 opacity-0 group-hover/link:-translate-x-2 group-hover/link:opacity-100 transition-all duration-300 ease-in-out"
                               />
                             </span>
-                          </Link>
+                          </LoaderLink>
                         </div>
                       </div>
                     </div>

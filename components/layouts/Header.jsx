@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { navigation_links } from "@/constants";
 import { logo } from "@/public";
 import { cn } from "@/utils/cn";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { LoaderLink } from "@/components/ui/NavigationLoader";
 
 const Header = () => {
   const pathname = usePathname();
@@ -40,7 +40,7 @@ const Header = () => {
               : " bg-white border-transparent"
           )}
         >
-          <Link href="/" className="flex items-center gap-3">
+          <LoaderLink href="/" className="flex items-center gap-3">
             <Image
               width={400}
               height={80}
@@ -48,12 +48,12 @@ const Header = () => {
               alt="Bookwhisk"
               className="h-14 w-auto"
             />
-          </Link>
+          </LoaderLink>
           <nav className="hidden items-center gap-10 md:flex">
             {navItems.slice(0, -1).map((item) => {
               const isActive = pathname === item.href;
               return (
-                <Link
+                <LoaderLink
                   key={item.name}
                   href={item.href}
                   className={cn(
@@ -72,18 +72,17 @@ const Header = () => {
                   )}
                 >
                   {item.name}
-                </Link>
+                </LoaderLink>
               );
             })}
           </nav>
           <div className="flex items-center gap-5 justify-end">
-            <Link
+            <LoaderLink
               href="/signup"
               className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-6 py-2.5 text-base font-semibold text-white shadow-[0_3px_10px_rgba(249,115,22,0.3)] transition-colors hover:bg-orange-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
-              onClick={() => setOpenDropdown(null)}
             >
               Sign-Up Now
-            </Link>
+            </LoaderLink>
           </div>
         </div>
       </div>
