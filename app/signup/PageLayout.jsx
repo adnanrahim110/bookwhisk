@@ -1,20 +1,29 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle,
+  Loader2,
   Mail,
   Phone,
   Sparkles,
   User,
 } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 import { LoaderLink } from "@/components/ui/NavigationLoader";
 import { cn } from "@/utils/cn";
+import { submitForm } from "@/utils/formSubmit";
+import { RiPhoneLine } from "react-icons/ri";
+
+const phoneDisplay = "+1 (407) 966-9398";
+const phoneLink = "+14079669398";
 
 const PageLayout = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -23,6 +32,8 @@ const PageLayout = () => {
     message: "",
     consent: false,
   });
+  const [messageLength, setMessageLength] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [focusedField, setFocusedField] = useState(null);
 
@@ -32,11 +43,62 @@ const PageLayout = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+    if (name === "message") {
+      setMessageLength(value.length);
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
+  const resetForm = () => {
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      message: "",
+      consent: false,
+    });
+    setMessageLength(0);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    const form = event.currentTarget;
+    const payload = new FormData(form);
+    payload.append("formName", "Author Sign Up Form");
+    payload.append(
+      "fullName",
+      `${formData.firstName} ${formData.lastName}`.trim()
+    );
+    payload.append("name", `${formData.firstName} ${formData.lastName}`.trim());
+
+    setIsSubmitting(true);
+    const { success, error, validationErrors } = await submitForm({
+      formData: payload,
+      requiredFields: [
+        "firstName",
+        "lastName",
+        "email",
+        "phone",
+        "message",
+        "consent",
+      ],
+    });
+
+    if (success) {
+      resetForm();
+      setIsSubmitting(false);
+      router.push("/thankyou");
+      return;
+    }
+
+    const errorMessage =
+      Object.values(validationErrors ?? {})[0] ||
+      error ||
+      "We couldn't submit your request. Please try again.";
+    toast.error(errorMessage);
+    setIsSubmitting(false);
   };
 
   const benefits = [
@@ -89,14 +151,32 @@ const PageLayout = () => {
               ))}
             </div>
 
-            <div className="mt-8 p-5 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30 shadow-xl">
-              <div className="flex items-center gap-3 mb-2">
-                <Sparkles className="w-5 h-5 text-yellow-200 drop-shadow" />
-                <p className="text-white font-semibold">Limited Time Offer</p>
+            <div className="relative z-10 mt-8">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
+                <p className="text-white/90 mb-3 text-sm font-medium">
+                  Have questions? Call us directly:
+                </p>
+                <a
+                  href={`tel:${phoneLink}`}
+                  className="text-2xl font-bold text-white hover:text-white/80 transition-colors inline-flex items-center gap-2 group/phone"
+                >
+                  <RiPhoneLine className="text-xl" />
+                  {phoneDisplay}
+                  <svg
+                    className="w-5 h-5 opacity-0 group-hover/phone:opacity-100 group-hover/phone:translate-x-1 transition-all"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </a>
               </div>
-              <p className="text-sm text-orange-50">
-                Get a free consultation worth $200 when you sign up today!
-              </p>
             </div>
           </div>
         </div>
@@ -252,6 +332,7 @@ const PageLayout = () => {
                       placeholder="Tell us about your publishing needs..."
                       required
                       rows="5"
+                      maxLength={500}
                       className={cn(
                         "w-full px-3 py-2.5 text-sm bg-white border rounded-xl focus:ring-2 focus:ring-primary-500/20 outline-none transition-all text-gray-900 placeholder:text-gray-400 resize-none",
                         focusedField === "message"
@@ -259,6 +340,9 @@ const PageLayout = () => {
                           : "border-gray-300"
                       )}
                     />
+                    <span className="absolute bottom-2 right-3 text-xs text-gray-400">
+                      {messageLength}/500
+                    </span>
                   </div>
                 </div>
 
@@ -288,24 +372,30 @@ const PageLayout = () => {
 
                 <button
                   type="submit"
-                  disabled={!formData.consent}
+                  disabled={!formData.consent || isSubmitting}
                   className={cn(
-                    "w-full py-3 rounded-xl font-bold text-base transition-all duration-300 shadow-lg group relative overflow-hidden",
-                    formData.consent
-                      ? "bg-linear-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 shadow-primary-500/30 hover:shadow-primary-500/50 hover:scale-[1.02]"
-                      : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    "w-full py-3 rounded-xl font-bold text-base transition-all duration-300 relative overflow-hidden",
+                    isSubmitting
+                      ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                      : formData.consent
+                      ? "bg-linear-to-r from-primary-500 to-primary-600 text-white group hover:from-primary-600 hover:to-primary-700 shadow-primary-500/30 hover:shadow-primary-500/50 shadow-lg"
+                      : "bg-gray-200 text-gray-500 cursor-not-allowed"
                   )}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Start Publishing Today
-                    <ArrowRight
-                      className={cn(
-                        "w-5 h-5 transition-transform duration-300",
-                        formData.consent && "group-hover:translate-x-1"
-                      )}
-                    />
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Start Publishing Today
+                        <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                      </>
+                    )}
                   </span>
-                  {formData.consent && (
+                  {formData.consent && !isSubmitting && (
                     <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
                   )}
                 </button>
@@ -313,14 +403,14 @@ const PageLayout = () => {
                 <p className="text-sm text-center text-gray-500 leading-relaxed">
                   By signing up, you agree to our{" "}
                   <LoaderLink
-                    href="/terms"
+                    href="/terms-and-conditions"
                     className="text-primary-600 hover:text-primary-700"
                   >
                     Terms
                   </LoaderLink>{" "}
                   and{" "}
                   <LoaderLink
-                    href="/privacy"
+                    href="/privacy-policy"
                     className="text-primary-600 hover:text-primary-700"
                   >
                     Privacy Policy

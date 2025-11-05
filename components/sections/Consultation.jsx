@@ -1,10 +1,18 @@
-import Button from "@/components/ui/Button";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
+
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
+import { submitForm } from "@/utils/formSubmit";
+import { Loader } from "lucide-react";
 import {
   RiCalendarCheckLine,
   RiFileList3Line,
+  RiLoader4Line,
   RiPhoneLine,
   RiTimeLine,
 } from "react-icons/ri";
@@ -30,10 +38,58 @@ const consultationBenefits = [
   },
 ];
 
-const phoneDisplay = "(123) 456-7890";
-const phoneLink = "+1234567890";
+const phoneDisplay = "+1 (407) 966-9398";
+const phoneLink = "+14079669398";
 
 const Consultation = () => {
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [messageCount, setMessageCount] = useState(0);
+  const [formResetKey, setFormResetKey] = useState(0);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    try {
+      const keys = Array.from(formData.keys());
+      const toRemove = keys.filter((k) => {
+        const lk = k.toLowerCase();
+        return (
+          lk === "base_js_url" ||
+          lk === "basejsurl" ||
+          (lk.includes("base") && (lk.includes("js") || lk.includes("url")))
+        );
+      });
+      toRemove.forEach((k) => formData.delete(k));
+    } catch (e) {}
+    formData.append("formName", "Consultation Form");
+
+    setIsSubmitting(true);
+    const { success, error, validationErrors } = await submitForm({
+      formData,
+      requiredFields: ["name", "email", "bookGenre", "projectStage"],
+    });
+
+    if (success) {
+      form.reset();
+      setMessageCount(0);
+      setFormResetKey((prev) => prev + 1);
+      setIsSubmitting(false);
+      router.push("/thankyou");
+      return;
+    }
+
+    const errorMessage =
+      Object.values(validationErrors ?? {})[0] ||
+      error ||
+      "We couldn't submit your request. Please try again.";
+    toast.error(errorMessage);
+    setIsSubmitting(false);
+  };
+
   return (
     <section id="contact" className="relative overflow-hidden bg-primary-50">
       <div className="flex flex-wrap flex-col lg:flex-row">
@@ -117,7 +173,12 @@ const Consultation = () => {
               </p>
             </div>
 
-            <form data-readdy-form="true" id="contact-form">
+            <form
+              key={formResetKey}
+              data-readdy-form="true"
+              id="contact-form"
+              onSubmit={handleSubmit}
+            >
               <div className="space-y-4">
                 <div className="grid md:grid-cols-3 gap-4">
                   <Input
@@ -191,11 +252,23 @@ const Consultation = () => {
                   rows={4}
                   maxLength={500}
                   placeholder="Share a brief description of your book and what services you're interested in..."
-                  helperText="0/500 characters"
+                  helperText={`${messageCount}/500 characters`}
+                  onChange={(event) =>
+                    setMessageCount(event.target.value.length)
+                  }
                 />
-                <Button type="submit" variant="primary">
-                  Submit
-                </Button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full py-3 px-6 rounded-lg font-semibold text-base transition-all duration-200 flex items-center justify-center gap-2 ${
+                    isSubmitting
+                      ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                      : "bg-linear-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 hover:shadow-lg"
+                  }`}
+                >
+                  {isSubmitting && <Loader className="w-5 h-5 animate-spin" />}
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </button>
               </div>
             </form>
           </div>

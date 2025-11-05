@@ -4,7 +4,7 @@ import { LoaderLink } from "@/components/ui/NavigationLoader";
 import { navigation_links } from "@/constants";
 import { logo } from "@/public";
 import { cn } from "@/utils/cn";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, User, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -89,7 +89,7 @@ const Header = () => {
                 height={80}
                 src={logo}
                 alt="Bookwhisk"
-                className="h-10 2lg:h-14 w-auto"
+                className="h-10 2lg:h-15 object-contain w-auto"
               />
             </LoaderLink>
             <div className="flex lg:w-full justify-between items-center gap-3 md:gap-5">
@@ -120,12 +120,28 @@ const Header = () => {
                   );
                 })}
               </nav>
-              <LoaderLink
-                href="/signup"
-                className="hidden items-center justify-center rounded-lg bg-orange-500 px-6 py-2.5 text-base font-semibold text-white shadow-[0_3px_10px_rgba(249,115,22,0.3)] transition-colors hover:bg-orange-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 md:inline-flex"
-              >
-                Sign-Up Now
-              </LoaderLink>
+              <div className="flex items-center gap-2">
+                <LoaderLink
+                  href="/signup"
+                  className="hidden h-[42px] whitespace-nowrap items-center justify-center rounded-xl bg-linear-to-r from-primary-500 to-primary-600 px-5 text-sm font-bold text-white shadow-lg shadow-primary-500/30 transition-all duration-300 hover:from-primary-600 hover:to-primary-700 hover:shadow-xl hover:shadow-primary-500/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 md:inline-flex gap-2 group"
+                >
+                  <User
+                    size={18}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <span>Sign Up</span>
+                </LoaderLink>
+                <LoaderLink
+                  href="tel:+14079669398"
+                  className="hidden h-[42px] whitespace-nowrap items-center justify-center rounded-xl border-2 border-primary-500 bg-white px-5 text-sm font-bold text-primary-600 shadow-lg shadow-primary-500/10 transition-all duration-300 hover:bg-primary-50 hover:border-primary-600 hover:shadow-xl hover:shadow-primary-500/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 md:inline-flex gap-2 group"
+                >
+                  <Phone
+                    size={18}
+                    className="transition-transform duration-300 group-hover:rotate-12"
+                  />
+                  <span>Call Now</span>
+                </LoaderLink>
+              </div>
               <button
                 type="button"
                 onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -184,12 +200,28 @@ const Header = () => {
                       );
                     })}
                   </nav>
-                  <LoaderLink
-                    href="/signup"
-                    className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-6 py-2.5 text-base font-semibold text-white shadow-[0_3px_10px_rgba(249,115,22,0.3)] transition-colors hover:bg-orange-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
-                  >
-                    Sign-Up Now
-                  </LoaderLink>
+                  <div className="flex items-center gap-2">
+                    <LoaderLink
+                      href="/signup"
+                      className="h-[42px] whitespace-nowrap items-center justify-center rounded-xl bg-linear-to-r from-primary-500 to-primary-600 px-5 text-sm font-bold text-white shadow-lg shadow-primary-500/30 transition-all duration-300 hover:from-primary-600 hover:to-primary-700 hover:shadow-xl hover:shadow-primary-500/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 inline-flex gap-2 group"
+                    >
+                      <User
+                        size={18}
+                        className="transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <span>Sign Up</span>
+                    </LoaderLink>
+                    <LoaderLink
+                      href="tel:+14079669398"
+                      className="h-[42px] whitespace-nowrap items-center justify-center rounded-xl border-2 border-primary-500 bg-white px-5 text-sm font-bold text-primary-600 shadow-lg shadow-primary-500/10 transition-all duration-300 hover:bg-primary-50 hover:border-primary-600 hover:shadow-xl hover:shadow-primary-500/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 inline-flex gap-2 group"
+                    >
+                      <Phone
+                        size={18}
+                        className="transition-transform duration-300 group-hover:rotate-12"
+                      />
+                      <span>Call Now</span>
+                    </LoaderLink>
+                  </div>
                 </div>
               </motion.div>
             )}
