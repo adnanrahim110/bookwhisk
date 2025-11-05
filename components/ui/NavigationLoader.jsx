@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -17,8 +18,19 @@ import { cn } from "@/utils/cn";
 
 const NavigationLoaderContext = createContext(null);
 
-const MIN_VISIBLE_MS = 250;
-const TRANSITION_MS = 400;
+const MIN_VISIBLE_MS = 500;
+const TRANSITION_MS = 500;
+
+const overlayVariants = {
+  preparing: { opacity: 0, y: "100%" },
+  visible: { opacity: 1, y: "0%" },
+  leaving: { opacity: 0, y: "-100%" },
+};
+
+const overlayTransition = {
+  duration: TRANSITION_MS / 1000,
+  ease: [0.24, 0.84, 0.25, 1],
+};
 
 const shouldTriggerLoader = (event, href, target) => {
   if (event.defaultPrevented) return false;
@@ -104,21 +116,26 @@ export const NavigationLoaderProvider = ({ children }) => {
   const overlayVisible = isMounted && phase !== "hidden";
   const overlayClasses = cn(
     "fixed inset-0 z-[9999] flex items-center justify-center bg-white",
-    "transition-transform duration-500 ease-in-out will-change-transform",
-    phase === "preparing"
-      ? "translate-y-full"
-      : phase === "visible"
-      ? "translate-y-0"
-      : "-translate-y-full",
-    phase === "visible" || phase === "preparing"
-      ? "pointer-events-auto"
-      : "pointer-events-none"
+    "pointer-events-auto"
   );
+  const motionState =
+    phase === "visible"
+      ? "visible"
+      : phase === "preparing"
+      ? "preparing"
+      : "leaving";
 
   return (
     <NavigationLoaderContext.Provider value={contextValue}>
       {overlayVisible && (
-        <div className={overlayClasses} aria-hidden={!contextValue.isActive}>
+        <motion.div
+          className={overlayClasses}
+          aria-hidden={!contextValue.isActive}
+          initial="preparing"
+          animate={motionState}
+          variants={overlayVariants}
+          transition={overlayTransition}
+        >
           <div
             role="status"
             aria-live="polite"
@@ -126,7 +143,7 @@ export const NavigationLoaderProvider = ({ children }) => {
           >
             <div className="h-14 w-14 rounded-full border-4 border-primary/30 border-t-primary animate-spin" />
           </div>
-        </div>
+        </motion.div>
       )}
       {children}
     </NavigationLoaderContext.Provider>
