@@ -104,8 +104,12 @@ export const NavigationLoaderProvider = ({ children }) => {
   const overlayVisible = isMounted && phase !== "hidden";
   const overlayClasses = cn(
     "fixed inset-0 z-[9999] flex items-center justify-center bg-white",
-    "transition-transform duration-400 ease-in-out",
-    phase === "visible" ? "translate-y-0" : "translate-y-full",
+    "transition-transform duration-500 ease-in-out will-change-transform",
+    phase === "preparing"
+      ? "translate-y-full"
+      : phase === "visible"
+      ? "translate-y-0"
+      : "-translate-y-full",
     phase === "visible" || phase === "preparing"
       ? "pointer-events-auto"
       : "pointer-events-none"
