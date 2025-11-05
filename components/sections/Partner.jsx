@@ -84,11 +84,12 @@ const Partner = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="lg:col-span-2 text-center">
             <Subtitle>Why Bookwhisk</Subtitle>
-            <h2 className="text-4xl md:text-5xl text-slate-800 mb-3">
-              Publishing has never been this effortless. <br /> We whisk away
-              the hard parts of publishing.
+            <h2 className="text-2xl md:text-4xl lg:text-5xl text-slate-800 mb-3">
+              Publishing has never been this effortless.{" "}
+              <br className="max-lg:hidden" /> We whisk away the hard parts of
+              publishing.
             </h2>
-            <p className="text-lg text-neutral-700 max-w-5xl mx-auto">
+            <p className="md:text-lg text-neutral-700 max-w-5xl mx-auto">
               Every book deserves a team that believes in it. At Bookwhisk, we
               match each author with editors, designers, and genre-specialist
               artists who understand their story’s soul. It’s a collaborative
@@ -100,7 +101,7 @@ const Partner = () => {
             <div className="space-y-6">
               {benefits.map(({ title, description, icon: Icon }) => (
                 <div key={title} className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-linear-to-br from-orange-500 to-rose-500 rounded-xl flex items-center justify-center shrink-0 shadow-md">
+                  <div className="size-12 bg-linear-to-br from-orange-500 to-rose-500 rounded-xl flex items-center justify-center shrink-0 shadow-md">
                     <Icon className="text-xl text-white" />
                   </div>
                   <div>
@@ -116,28 +117,32 @@ const Partner = () => {
           <div className="relative">
             <div className="absolute -top-8 -right-8 w-80 h-80 bg-orange-200 rounded-full blur-3xl opacity-30 -z-10"></div>
             <div className="absolute -bottom-8 -left-8 w-80 h-80 bg-rose-200 rounded-full blur-3xl opacity-30 -z-10"></div>
-            <div className="bg-linear-to-br from-orange-50 to-rose-50 p-12 rounded-3xl border border-orange-200 shadow-xl">
+            <div className="bg-linear-to-br from-orange-50 to-rose-50 p-5 lg:p-12 rounded-3xl border border-orange-200 shadow-xl">
               <div className="space-y-8">
                 {highlights.map(
                   ({ value, label, quote, icon: Icon, iconGradient }) => (
                     <div
                       key={value}
-                      className="bg-white p-6 rounded-2xl shadow-md"
+                      className="bg-white p-4 lg:p-6 rounded-2xl shadow-md"
                     >
                       <div className="flex items-center gap-4 mb-4">
                         <div
-                          className={`w-12 h-12 bg-linear-to-br ${iconGradient} rounded-full flex items-center justify-center`}
+                          className={`size-10 lg:size-12 bg-linear-to-br ${iconGradient} rounded-full flex items-center justify-center`}
                         >
                           <Icon className="text-white text-xl" />
                         </div>
                         <div>
-                          <div className="text-2xl font-bold text-slate-800">
+                          <div className="text-xl lg:text-2xl font-bold text-slate-800">
                             {value}
                           </div>
-                          <div className="text-sm text-slate-600">{label}</div>
+                          <div className="text-xs md:text-sm text-slate-600">
+                            {label}
+                          </div>
                         </div>
                       </div>
-                      <p className="text-slate-600 text-sm italic">{quote}</p>
+                      <p className="text-slate-600 text-xs md:text-sm italic">
+                        {quote}
+                      </p>
                     </div>
                   )
                 )}

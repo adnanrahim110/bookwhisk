@@ -60,17 +60,17 @@ const Services = () => {
       className="relative bg-primary-50"
       style={{ height: `calc(${services.length + 1.5} * 100vh)` }}
     >
-      <div className="sticky top-0 h-dvh py-32">
+      <div className="sticky top-0 h-dvh py-24 lg:py-32">
         <div className="container">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-center">
+          <div className="flex flex-col gap-6 lg:gap-12 lg:flex-row lg:items-center">
             <div className="lg:w-5/12 w-full">
-              <div className="relative h-full">
+              <div className="relative h-full max-lg:h-60">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={activeService.image}
                     src={activeService.image}
                     alt={activeService.title}
-                    className="rounded-2xl"
+                    className="rounded-2xl max-lg:size-full max-lg:object-cover"
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
@@ -89,7 +89,7 @@ const Services = () => {
                     Your Self-Publishing Partners
                   </p>
                 </div>
-                <div className="pt-6 pb-0.5 pl-20 overflow-hidden">
+                <div className="pt-6 pb-0.5 pl-16 lg:pl-20 overflow-hidden">
                   {services.map((serv, idx) => {
                     const isActive = idx === activeIndex;
 
@@ -97,8 +97,8 @@ const Services = () => {
                       <div
                         key={idx}
                         className={cn(
-                          "relative not-last:pb-5",
-                          "not-last:after:w-[1.5px] not-last:after:h-full not-last:after:absolute not-last:after:-left-[46px] not-last:after:top-6 not-last:after:bg-primary-300"
+                          "relative not-last:pb-4 lg:not-last:pb-5",
+                          "not-last:after:w-[1.5px] not-last:after:h-full not-last:after:absolute not-last:after:-left-9 lg:not-last:after:-left-[46px] not-last:after:top-6 not-last:after:bg-primary-300"
                         )}
                         aria-current={isActive}
                       >
@@ -106,25 +106,27 @@ const Services = () => {
                           className={cn(
                             "absolute rounded-full z-1",
                             isActive
-                              ? "text-2xl font-medium text-white size-[45px] bg-primary -left-[68px] flex items-center justify-center outline-10 outline-primary-50 shadow-[0_0_0_10px_#ffc46d,0_0_0_11.5px_#ffc46d] top-0"
-                              : "-left-[52.5px] top-2 size-4 bg-primary-300"
+                              ? "text-lg lg:text-2xl font-medium text-white size-8 lg:size-[45px] bg-primary -left-[52px] lg:-left-[68px] flex items-center justify-center outline-6 lg:outline-10 outline-primary-50 shadow-[0_0_0_6px_#ffc46d,0_0_0_7.5px_#ffc46d] lg:shadow-[0_0_0_10px_#ffc46d,0_0_0_11.5px_#ffc46d] top-0"
+                              : "-left-[43.5px] lg:-left-[52.5px] top-2 size-4 bg-primary-300"
                           )}
                         >
                           {isActive && idx + 1}
                         </span>
                         <h3
                           className={cn(
-                            "text-2xl font-semibold transition-colors xl:text-[28px]",
-                            !isActive && idx < services.length - 1 && "mb-4",
+                            "text-xl lg:text-2xl font-semibold transition-colors xl:text-[28px]",
+                            !isActive &&
+                              idx < services.length - 1 &&
+                              "mb-1 lg:mb-4",
                             isActive
-                              ? "text-primary mb-2.5"
+                              ? "text-primary mb-1 lg:mb-2.5"
                               : "text-neutral-700"
                           )}
                         >
                           {serv.title}
                         </h3>
                         {isActive && (
-                          <p className="xl:text-lg text-neutral-700">
+                          <p className="text-sm lg:text-base xl:text-lg text-neutral-700">
                             {serv.description}
                           </p>
                         )}
@@ -132,7 +134,7 @@ const Services = () => {
                     );
                   })}
                 </div>
-                <div className="mt-10 ml-20 flex items-center flex-wrap">
+                <div className="mt-6 lg:mt-10 ml-15 lg:ml-20 flex items-center flex-wrap">
                   <Button href="/contact" className="text-sm">
                     Begin Your BookWhisk Journey
                   </Button>

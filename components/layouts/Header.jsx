@@ -17,6 +17,7 @@ const Header = () => {
   const [isAtTop, setIsAtTop] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const toggleButtonRef = useRef(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -56,8 +57,13 @@ const Header = () => {
 
     const handleClickOutside = (event) => {
       if (!isMenuOpen) return;
-      if (!menuRef.current) return;
-      if (menuRef.current.contains(event.target)) return;
+
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+
+      if (menuRef.current?.contains(target)) return;
+      if (toggleButtonRef.current?.contains(target)) return;
+
       setIsMenuOpen(false);
     };
 
@@ -66,7 +72,7 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className="fixed w-full top-7 z-50">
+    <header className="fixed w-full top-4 lg:top-7 z-50">
       <div className="container">
         <div
           className={cn(
@@ -86,8 +92,8 @@ const Header = () => {
                 className="h-10 2lg:h-14 w-auto"
               />
             </LoaderLink>
-            <div className="flex items-center gap-3 md:gap-5">
-              <nav className="hidden items-center gap-10 md:flex">
+            <div className="flex lg:w-full justify-between items-center gap-3 md:gap-5">
+              <nav className="hidden items-center gap-10 md:flex w-full justify-center">
                 {navItems.slice(0, -1).map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -132,6 +138,7 @@ const Header = () => {
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-navigation"
                 aria-label="Toggle navigation menu"
+                ref={toggleButtonRef}
               >
                 {isMenuOpen ? (
                   <X className="h-5 w-5" />

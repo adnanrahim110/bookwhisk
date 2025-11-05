@@ -86,7 +86,7 @@ const PubTypes = () => {
                       </h3>
                       <p
                         className={cn(
-                          "text-lg md:text-xl font-medium",
+                          "md:text-lg lg:text-xl font-medium",
                           isBookWhisk
                             ? "text-green-100"
                             : isTraditional
@@ -129,7 +129,7 @@ const PubTypes = () => {
                           </div>
                           <span
                             className={cn(
-                              "text-sm",
+                              "text-xs md:text-sm",
                               isBookWhisk ? "text-white" : "text-slate-700"
                             )}
                           >

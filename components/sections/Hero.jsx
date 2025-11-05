@@ -10,15 +10,15 @@ const stats = [
 
 const Hero = () => {
   return (
-    <section className="relative bg-white overflow-hidden pt-44 pb-32">
+    <section className="relative bg-white overflow-hidden pt-32 lg:pt-44 pb-20 lg:pb-32">
       <div className="absolute lg:w-2/5 lg:h-[500px] -top-5 -left-5 bg-linear-to-br from-primary-200 via-primary-50/50 to-white rounded-br-full blur-2xl" />
       <div className="absolute lg:w-2/5 lg:h-[500px] -top-5 -right-5 bg-linear-to-bl from-secondary-200 via-secondary-50/50 to-white rounded-bl-full blur-2xl" />
       <div className="container relative z-1">
         <div className="text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-900 leading-tight mb-2">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-slate-900 leading-tight mb-2">
             Whisk Your Book To Life
           </h1>
-          <p className="mx-auto max-w-4xl mb-4">
+          <p className=" mx-auto max-w-4xl mb-4">
             A publishing experience crafted for authors who care about quality.
             From the first edit to the final sale, <br /> Bookwhisk blends
             precision and passion, all whisked together in one intuitive
@@ -42,18 +42,18 @@ const Hero = () => {
             height={370}
             src="/imgs/laptop-1.avif"
             alt="Hero"
-            className="lg:w-lg xl:"
+            className="w-3xs lg:w-lg xl:w-[620px]"
           />
         </div>
         <div className="absolute left-1/2 w-full -translate-x-1/2 flex items-center justify-between z-0">
           <div className="absolute top-0 left-0 h-full w-2/5 bg-linear-to-r from-white/90 via-white/10 to-transparent z-8" />
           <div className="absolute top-0 right-0 h-full w-2/5 bg-linear-to-l from-white/90 via-white/10 to-transparent z-8" />
-          <div className="md:w-[570px] lg:w-md flex relative items-center flex-nowrap justify-center">
+          <div className="w-3xs lg:w-md xl:w-xl flex relative items-center flex-nowrap justify-center">
             {[...Array(4)].map((_, idx) => (
               <div
                 key={idx}
                 className={cn(
-                  "max-w-full -ml-[2%] overflow-hidden bg-white rounded-[2%_1%_1%_2%]",
+                  "max-w-full -ml-[5%] md:-ml-[2%] overflow-hidden bg-white rounded-[2%_1%_1%_2%]",
                   idx === 0 && "w-[31%] z-1",
                   idx === 1 && "w-[35%] z-2",
                   idx === 2 && "w-[38%] z-3",
@@ -70,12 +70,12 @@ const Hero = () => {
               </div>
             ))}
           </div>
-          <div className="md:w-[570px] lg:w-md flex relative items-center flex-nowrap justify-center">
+          <div className="w-3xs lg:w-md xl:w-xl flex relative items-center flex-nowrap justify-center">
             {[...Array(4)].map((_, idx) => (
               <div
                 key={idx}
                 className={cn(
-                  "max-w-full -ml-[2%] overflow-hidden bg-white rounded-[2%_1%_1%_2%]",
+                  "max-w-full -ml-[5%] md:-ml-[2%] overflow-hidden bg-white rounded-[2%_1%_1%_2%]",
                   idx === 0 && "w-[43%] z-4",
                   idx === 1 && "w-[38%] z-3",
                   idx === 2 && "w-[35%] z-2",

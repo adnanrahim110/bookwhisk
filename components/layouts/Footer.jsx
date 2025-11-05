@@ -44,7 +44,7 @@ const Footer = () => {
       <div className="container">
         <div className="rounded-2xl border border-primary-200 overflow-hidden">
           <div className="px-5 pt-12 pb-8 xl:px-10 xl:pb-14 xl:pt-20 bg-linear-to-r from-secondary-50 via-white to-white">
-            <div className="flex flex-wrap justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start gap-y-6">
               <div className="w-full md:w-1/2 lg:w-[23%] xl:w-[21%] -mt-4 xl:-mt-7">
                 <div className="flex flex-col gap-2">
                   <LoaderLink href="/">
@@ -81,7 +81,7 @@ const Footer = () => {
               </div>
               <div className="w-full lg:w-[38%] xl:w-[35%]">
                 <div className="flex flex-wrap justify-between items-end">
-                  <div className="w-2/5">
+                  <div className="w-1/2 lg:w-2/5">
                     <h4 className="text-xl font-semibold text-slate-700 mb-3">
                       Services
                     </h4>
@@ -93,7 +93,7 @@ const Footer = () => {
                       ))}
                     </ul>
                   </div>
-                  <div className="w-3/5">
+                  <div className="w-1/2 lg:w-3/5">
                     <ul className="space-y-2 text-sm text-slate-600">
                       {services.slice(6).map((c, idx) => (
                         <li key={idx}>
@@ -146,8 +146,8 @@ const Footer = () => {
           </div>
           <div className="border-t border-t-primary-200 bg-linear-to-l from-primary-50 via-white to-white">
             <div className="px-5 py-7 xl:p-10">
-              <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start lg:w-[65%]">
+              <div className="flex flex-col md:flex-row items-start justify-between gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 items-start lg:w-[65%]">
                   <div className="flex items-start gap-2">
                     <div className="shrink-0 text-secondary">
                       <ShieldCheck size={40} />
@@ -173,8 +173,8 @@ const Footer = () => {
                   </div>
                 </div>
 
-                <div className="lg:w-[35%] flex flex-col md:items-end md:justify-center">
-                  <div className="flex items-center gap-4">
+                <div className="lg:w-[35%] flex flex-col justify-start items-start md:items-end md:justify-center">
+                  <div className="flex md:items-center gap-4">
                     {[mc, v, pp, s].map((c, idx) => (
                       <Image
                         key={idx}

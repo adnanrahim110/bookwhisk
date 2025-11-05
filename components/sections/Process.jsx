@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import Subtitle from "../ui/Subtitle";
 
 const steps = [
   {
@@ -88,16 +87,16 @@ const Process = () => {
       <div className="absolute z-0 top-1/2 -translate-y-1/2 -right-1/4 h-full aspect-square bg-radial from-primary-200 via-primary-50/50 to-white rounded-full blur-3xl" />
       <div className="container relative z-1">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-slate-800 mb-1">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slate-800 mb-1">
             How It Works
           </h2>
-          <p className="text-xl text-slate-600 leading-relaxed">
+          <p className="lg:text-xl text-slate-600 leading-relaxed">
             From first conversation to published book, we make the journey
             smooth and stress-free.
           </p>
         </div>
-        <div className="bg-white rounded-2xl border border-neutral-100 p-8 shadow-sm">
-          <div className="size-full grid grid-cols-1 gap-14">
+        <div className="bg-white rounded-2xl border border-neutral-100 p-6 shadow-sm md:p-8">
+          <div className="hidden size-full grid-cols-1 gap-14 lg:grid">
             <div className="w-full flex items-center justify-between gap-5">
               {steps.map((step, idx) => (
                 <button
@@ -171,6 +170,62 @@ const Process = () => {
                   className="drop-shadow-lg"
                 />
               </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-8 lg:hidden">
+            <div className="flex items-center justify-between overflow-x-auto pb-2">
+              {steps.map((step, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActive(idx)}
+                  className={cn(
+                    "shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
+                    active === idx
+                      ? "border-primary bg-primary text-white shadow-sm"
+                      : "border-slate-200 bg-white text-slate-600 hover:border-primary hover:text-primary"
+                  )}
+                >
+                  Step {idx + 1}
+                </button>
+              ))}
+            </div>
+            <div className="space-y-6">
+              <div className="w-full overflow-hidden rounded-2xl border border-neutral-100">
+                <Image
+                  width={768}
+                  height={512}
+                  src={steps[active].image}
+                  alt=""
+                  className="block w-full object-cover"
+                />
+              </div>
+              <div className="space-y-3">
+                <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                  Step {active + 1} of {steps.length}
+                </span>
+                <h3 className="text-2xl font-semibold text-neutral-900">
+                  {steps[active].title}
+                </h3>
+                <div className="space-y-4">
+                  {steps[active].description.map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3 rounded-xl border border-neutral-100 bg-neutral-50/70 p-4"
+                      >
+                        <div className="shrink-0 text-primary">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <p className="text-sm text-neutral-700">{item.text}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <Button href="/signup" className="self-start text-sm shadow-none">
+                Get Started
+              </Button>
             </div>
           </div>
         </div>

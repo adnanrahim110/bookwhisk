@@ -16,13 +16,13 @@ const Team = () => {
             <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
             Meet Our Team
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-3">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-slate-900 mb-3">
             Experts Who Care About
             <span className="block bg-linear-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent">
               Your Success
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed">
+          <p className="md:text-lg lg:text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed">
             Our in-house team brings decades of combined experience in editing,
             design, publishing, and marketing. Every member is dedicated to
             making your book the best it can be.
@@ -59,7 +59,7 @@ const Team = () => {
                 <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                   Your Dedicated Project Manager
                 </h3>
-                <p className="text-lg xl:text-xl text-slate-600 leading-relaxed">
+                <p className="md:text-lg xl:text-xl text-slate-600 leading-relaxed">
                   Every author gets a personal project manager who coordinates
                   all aspects of your publishing journey. <br /> One point of
                   contact, seamless communication, and peace of mind.

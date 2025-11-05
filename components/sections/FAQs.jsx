@@ -25,7 +25,7 @@ const FAQItem = ({ item, isOpen, onToggle, idx }) => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute h-full top-0 left-0 w-14 rounded-l-2xl flex items-center justify-start"
+            className="max-md:hidden absolute h-full top-0 left-0 w-14 rounded-l-2xl flex items-center justify-start"
           >
             <span className="absolute text-[140px] -left-2 font-bold text-transparent bg-clip-text bg-linear-to-r from-primary-300 via-primary-200/50 to-transparent tabular-nums">
               {formattedIndex}
@@ -39,7 +39,7 @@ const FAQItem = ({ item, isOpen, onToggle, idx }) => {
         }}
         transition={{ duration: 0.4 }}
         onClick={onToggle}
-        className="w-full px-5 pt-5 pl-[68px] flex items-start justify-between gap-6 relative"
+        className="w-full px-2.5 md:px-5 pt-2.5 md:pt-5 md:pl-[68px] flex items-start justify-between gap-6 relative"
         aria-expanded={isOpen}
         aria-controls={`faq-${idx}`}
       >
@@ -51,7 +51,7 @@ const FAQItem = ({ item, isOpen, onToggle, idx }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute left-3 text-lg font-semibold border-2 border-primary text-primary rounded-full w-9 h-9 shrink-0 flex items-center justify-center pt-0.5"
+                className="max-md:hidden absolute left-3 text-lg font-semibold border-2 border-primary text-primary rounded-full w-9 h-9 shrink-0 flex items-center justify-center pt-0.5"
               >
                 {formattedIndex}
               </motion.div>
@@ -61,7 +61,7 @@ const FAQItem = ({ item, isOpen, onToggle, idx }) => {
             <motion.h3
               animate={{ color: isOpen ? "#ff6900" : "#000" }}
               transition={{ duration: 0.4 }}
-              className="text-xl font-semibold"
+              className="lg:text-xl font-semibold"
             >
               {item.q}
             </motion.h3>
@@ -100,7 +100,7 @@ const FAQItem = ({ item, isOpen, onToggle, idx }) => {
             className="overflow-hidden"
             aria-hidden={!isOpen}
           >
-            <div className="px-6 pb-6 pl-[68px] text-neutral-800 text-[15px]">
+            <div className="px-3 md:px-6 pb-3 md:pb-6 md:pl-[68px] text-neutral-800 text-sm md:text-[15px]">
               <div
                 className="prose prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: item.a }}

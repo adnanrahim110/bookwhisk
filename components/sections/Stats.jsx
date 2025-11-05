@@ -24,7 +24,7 @@ const Stats = () => {
   return (
     <section className="bg-primary-50 py-14">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr]">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-y-5">
           {stats.map(({ icon: Icon, value, label }, idx) => (
             <Fragment key={idx}>
               <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left px-10">

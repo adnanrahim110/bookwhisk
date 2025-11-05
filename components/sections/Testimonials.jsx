@@ -12,18 +12,18 @@ const Testimonials = () => {
     <section className="py-24 bg-white overflow-hidden">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-slate-800 mb-6">
+          <h2 className="text-[26px] md:text-4xl lg:text-5xl font-serif text-slate-800 mb-2">
             Authors Love Working With Us
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Don't just take our word for it. Here's what published authors have
             to say about their Bookwhisk experience.
           </p>
         </div>
       </div>
       <div className="grid gap-3.5 grid-cols-1 w-full relative">
-        <div className="h-full w-56 absolute top-0 -left-5 bg-linear-to-r from-white to-transparent z-2 pointer-events-none" />
-        <div className="h-full w-56 absolute top-0 -right-5 bg-linear-to-l from-white to-transparent z-2 pointer-events-none" />
+        <div className="h-full w-20 lg:w-56 absolute top-0 -left-5 bg-linear-to-r from-white to-transparent z-2 pointer-events-none" />
+        <div className="h-full w-20 lg:w-56 absolute top-0 -right-5 bg-linear-to-l from-white to-transparent z-2 pointer-events-none" />
         {[...Array(2)].map((_, colIdx) => {
           const chunk = reviews.slice(colIdx * 10, colIdx * 10 + 10);
           return (
@@ -43,7 +43,7 @@ const Testimonials = () => {
               >
                 {chunk.map((review, idx) => (
                   <SwiperSlide key={idx} className="w-auto! h-full!">
-                    <div className="bg-primary-50 border border-primary-100 px-5 py-4 flex flex-col justify-between rounded-2xl w-[450px] h-[278px]">
+                    <div className="bg-primary-50 border border-primary-100 px-5 py-4 flex flex-col justify-between rounded-2xl w-xs h-72 md:w-[450px] md:h-[278px]">
                       <p className="font-medium text-neutral-800">
                         {review.comment}
                       </p>
